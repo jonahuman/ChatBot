@@ -1,0 +1,4120 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PedidosYa Courier API",
+    "version": "3.0.0",
+    "description": "PedidosYa Courier API allows developers to build applications that automates the use of PedidosYa's logistics network. Through this it's possible to ship packages from a pickup point to a dropoff point.\n\nTo start using the PedidosYa Courier API you need to Generate an Authentication Token. You could get information about this [here](https://developers.pedidosya.com/courier-doc/first-steps#generate-token).<br> <br>",
+    "contact": {
+      "name": "Alejando Arias"
+    },
+    "license": {
+      "name": "PedidosYa"
+    },
+    "x-last-modified": 1605187884000,
+    "x-logo": {
+      "altText": "PedidosYa logo",
+      "url": "data:image/png;base64,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"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://courier-api.pedidosya.com",
+      "description": "The production URL of the PedidosYa  API",
+      "x-last-modified": 1605187884000
+    }
+  ],
+  "paths": {
+    "/v3/shippings/estimates": {
+      "post": {
+        "tags": [
+          "Shippings"
+        ],
+        "requestBody": {
+          "description": "Shipping information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstimationShippingRequest"
+              },
+              "example": {
+                "referenceId": "Client Internal Reference",
+                "isTest": true,
+                "notificationMail": "email@email.com",
+                "items": [
+                  {
+                    "type": "STANDARD",
+                    "value": 1250.6,
+                    "description": "Some book.",
+                    "sku": "ABC123",
+                    "quantity": 1,
+                    "volume": 10.01,
+                    "weight": 0.5
+                  },
+                  {
+                    "type": "STANDARD",
+                    "value": 250,
+                    "description": "T-Shirt",
+                    "sku": "ABC124",
+                    "quantity": 1,
+                    "volume": 10.01,
+                    "weight": 0.3
+                  }
+                ],
+                "waypoints": [
+                  {
+                    "type": "PICK_UP",
+                    "addressStreet": "Plaza Independencia 755",
+                    "addressAdditional": "Piso 6 Recepción",
+                    "city": "Montevideo",
+                    "latitude": -34.905988,
+                    "longitude": -56.199592,
+                    "phone": "+59898765432",
+                    "name": "Oficina Ciudad Vieja",
+                    "instructions": "El ascensor esta roto."
+                  },
+                  {
+                    "type": "DROP_OFF",
+                    "latitude": -34.9138414,
+                    "longitude": -56.1837661,
+                    "addressStreet": "La Cumparsita 1475",
+                    "addressAdditional": "Piso 1, Oficina Delivery",
+                    "city": "Montevideo",
+                    "phone": "+59812345678",
+                    "name": "Agustin",
+                    "instructions": "Entregar en mano",
+                    "collectMoney": 125
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstimationShippingResponse"
+                },
+                "example": {
+                  "estimateId": "520644687847685483",
+                  "referenceId": "Client Internal Reference",
+                  "isTest": true,
+                  "items": [
+                    {
+                      "type": "STANDARD",
+                      "value": 1250.6,
+                      "description": "Some book.",
+                      "sku": "ABC123",
+                      "quantity": 1,
+                      "volume": 10.01,
+                      "weight": 0.5
+                    }
+                  ],
+                  "waypoints": [
+                    {
+                      "type": "PICK_UP",
+                      "addressStreet": "Plaza Independencia 755",
+                      "addressAdditional": "Piso 6 Recepción",
+                      "city": "Montevideo",
+                      "latitude": -34.905988,
+                      "longitude": -56.199592,
+                      "phone": "+59898765432",
+                      "name": "Oficina Ciudad Vieja",
+                      "instructions": "El ascensor esta roto."
+                    },
+                    {
+                      "type": "DROP_OFF",
+                      "latitude": -34.9138414,
+                      "longitude": -56.1837661,
+                      "addressStreet": "La Cumparsita 1475",
+                      "addressAdditional": "Piso 1, Oficina Delivery",
+                      "city": "Montevideo",
+                      "phone": "+59812345678",
+                      "name": "Agustin",
+                      "instructions": "Entregar en mano"
+                    }
+                  ],
+                  "routes": {
+                    "distance": 123
+                  },
+                  "deliveryOffers": [
+                    {
+                      "deliveryOfferId": "679db4989914e48805f3303eb29c4dec",
+                      "deliveryMode": "EXPRESS",
+                      "confirmationTimeLimit": "2023-04-08T17:12:40Z",
+                      "pricing": {
+                        "subTotal": 131.36,
+                        "taxes": 0,
+                        "total": 131.36,
+                        "currency": "UYU"
+                      }
+                    },
+                    {
+                      "deliveryOfferId": "679db4989914e48805f3303eb29c4dec",
+                      "deliveryMode": "SCHEDULE",
+                      "deliveryTimeFrom": "2023-04-06T11:00:00Z",
+                      "deliveryTimeTo": "2023-04-06T14:00:00Z",
+                      "confirmationTimeLimit": "2023-04-06T10:37:00Z",
+                      "pricing": {
+                        "subTotal": 131.36,
+                        "taxes": 0,
+                        "total": 131.36,
+                        "currency": "UYU"
+                      }
+                    },
+                    {
+                      "deliveryOfferId": "679db4989914e48805f3303eb29c4dec",
+                      "deliveryMode": "CROSS_DOCKING",
+                      "estimatedPickUpTime": "2023-04-04T13:00:00Z",
+                      "deliveryTimeFrom": "2023-04-04T15:00:00Z",
+                      "deliveryTimeTo": "2023-04-04T18:00:00Z",
+                      "confirmationTimeLimit": "2023-04-04T12:55:00Z",
+                      "pricing": {
+                        "subTotal": 131.36,
+                        "taxes": 0,
+                        "total": 131.36,
+                        "currency": "UYU"
+                      }
+                    }
+                  ],
+                  "notificationMail": "email@email.com"
+                }
+              }
+            },
+            "description": "Shipping estimate created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestResponse"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "We were not able to find lat/long for waypoint/s in order: 1",
+                  "code": "WAYPOINTS_NOT_FOUND"
+                }
+              }
+            },
+            "description": "Warning or error in body's request fields or in body's json"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 500,
+                  "message": "Internal server error, please contact support"
+                }
+              }
+            },
+            "description": "Internal Server Errors, please contact support"
+          }
+        },
+        "summary": "Estimate Shipping Order",
+        "description": "By using this feature, you will be able to estimate a shipping order. This estimate will let you know when the order can or can't be delivered within the different waypoints. Additionally, you will receive an estimate of the distance and the price of the shipping order.\n\nThis endpoint will return a list of delivery offers, each one has a maximum confirmation time. More details in the confirmation endpoint. \n\n (*) The price may vary when publishing the order according to the use of our fleet. Do not hesitate to contact PedidosYa for more information on this point.",
+        "externalDocs": {
+          "description": "More details about Estimate Shipping Order",
+          "url": "https://developers.pedidosya.com/courier-doc/shipping-creation#shipping-estimation"
+        }
+      }
+    },
+    "/v3/shippings/estimates/{estimateId}/confirm": {
+      "post": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "estimateId",
+            "schema": {
+              "type": "string",
+              "pattern": " [0-9]+",
+              "maxLength": 255,
+              "description": "Shipping estimate identifier"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "description": "Shipping information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmedEstimationShippingRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingResponseConfirmed"
+                }
+              }
+            },
+            "description": "Confirmed estimate created"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestResponseConfirmate"
+                },
+                "example": {
+                  "status": 409,
+                  "message": "Shipping Estimate order can't be confirmed. Wrong Shipping Estimate current state.",
+                  "code": "INVALID_STATUS"
+                }
+              }
+            },
+            "description": "Warning or error in body's request fields or in body's json"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 500,
+                  "message": "Internal server error, please contact support"
+                }
+              }
+            },
+            "description": "Internal Server Errors, please contact support"
+          }
+        },
+        "summary": "Confirmed estimate order",
+        "description": "Estimated order confirmed. Once the estimate is made, one of the available delivery offers can be confirmed.\nOnce a delivery offer is confirmed, you will receive a confirmation code in the response. Use this 'Confirmation Code' when you have to contact the PedidosYa call center in case of a problem with the delivery of the order."
+      },
+      "x-last-modified": 1593182514276
+    },
+    "/v3/estimates/coverage": {
+      "post": {
+        "tags": [
+          "Coverage"
+        ],
+        "summary": "Estimates waypoints coverage",
+        "description": "This endpoint allows you to know if waypoints (one or two) are inside PedidosYa fleet’s working zone. The body response will be composed with an status. If there is any error, extra information will be added.\n\n If waypoints in the request doesn’t have latitude & longitude we will try to discover those values based by the addressStreet attribute, we use those values to get the geolocation. \n\n Additionally you could generate a static map (a JPG image in base64 format) for waypoints’ location. The generation of the static map can be enabled by passing a query param 'mapRequired=true'.",
+        "requestBody": {
+          "required": true,
+          "description": "Waypoints estimation request information. This model represents the waypoints coverage estimation request. You have to provide addressStreet and city and optional latitude and longitude. You can also provide latitude and longitude only. If you provide addressStreet and city only we use those values to get the geolocation (latitude and longitude values).",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CoverageRequest"
+              },
+              "example": {
+                "waypoints": [
+                  {
+                    "addressStreet": "La Cumparsita 1475",
+                    "city": "Montevideo",
+                    "latitude": -34.9143156,
+                    "longitude": -56.1814273,
+                    "type": "PICK_UP"
+                  },
+                  {
+                    "addressStreet": "Rambla Argentina 1222",
+                    "city": "Montevideo",
+                    "latitude": -34.9143157,
+                    "longitude": -56.1814274,
+                    "type": "DROP_OFF"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoverageResponse"
+                },
+                "example": {
+                  "status": 200,
+                  "message": "OK",
+                  "coverageStaticMap": "{string_value_for_map_image_base64_with_your_requested_points}"
+                }
+              }
+            },
+            "description": "Status indicating if a delivery can be performed between 2 waypoints. If one waypoint is given, the status will indicate if the waypoint is inside PedidosYa fleet's working zone ."
+          },
+          "400": {
+            "description": "Warning or error in body's request fields or in body's json.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestResponseCoverage"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "Max distance exceeded. The max distance allowed is 10000",
+                  "code": "MAX_DISTANCE_EXCEEDED",
+                  "details": {
+                    "maxDistanceAllowed": 10000,
+                    "totalDistance": 120000
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "Unable to perform estimates"
+                }
+              }
+            },
+            "description": "This response indicates that it was not possible to find all the information necessary to make an estimate, this can happen when there is a high demand at the time of making the estimate, it will be necessary to try again."
+          }
+        }
+      }
+    },
+    "/v3/working-zones": {
+      "summary": "Working Zones",
+      "description": "Working Zones are the GeoJSON zones that can be used as valid waypoint location. Every latitude and longitude must be inside these zones.",
+      "get": {
+        "tags": [
+          "Coverage"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WorkingZoneResponse"
+                  }
+                }
+              }
+            },
+            "description": "Polygon Zones in GeoJSON format to validate pickup and dropoff valid locations."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Get Fleet Working Zones",
+        "description": "Returns an array with the working (polygons) zones. This information should be used before attempting to create a shipping order."
+      }
+    },
+    "/v3/schedules": {
+      "summary": "Schedules Time",
+      "description": "Range working hours assigned for dispatching shipping orders using our fleet.",
+      "get": {
+        "tags": [
+          "Schedules"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ScheduleResponse"
+                  }
+                },
+                "example": [
+                  {
+                    "day": 1,
+                    "from": "2010-01-01T07:00:00Z",
+                    "to": "2010-01-01T23:00:00Z"
+                  },
+                  {
+                    "day": 2,
+                    "from": "2010-01-01T09:00:00Z",
+                    "to": "2010-01-01T20:00:00Z"
+                  }
+                ]
+              }
+            },
+            "description": "",
+            "x-last-modified": 1593095336572
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Get Schedule Times",
+        "description": "Working weekday and hours (in UTC) for a shipping order to be delivered."
+      },
+      "x-last-modified": 1593181571530
+    },
+    "/v3/shippings": {
+      "post": {
+        "tags": [
+          "Shippings"
+        ],
+        "requestBody": {
+          "description": "Shipping information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShippingRequest"
+              },
+              "example": {
+                "referenceId": "Client Internal Reference",
+                "isTest": true,
+                "notificationMail": "email@email.com",
+                "items": [
+                  {
+                    "type": "STANDARD",
+                    "value": 1250.6,
+                    "description": "Some book.",
+                    "sku": "ABC123",
+                    "quantity": 1,
+                    "volume": 10.01,
+                    "weight": 0.5
+                  },
+                  {
+                    "type": "STANDARD",
+                    "value": 250,
+                    "description": "T-Shirt",
+                    "sku": "ABC124",
+                    "quantity": 1,
+                    "volume": 10.01,
+                    "weight": 0.3
+                  }
+                ],
+                "waypoints": [
+                  {
+                    "type": "PICK_UP",
+                    "addressStreet": "Plaza Independencia 755",
+                    "addressAdditional": "Piso 6 Recepción",
+                    "city": "Montevideo",
+                    "latitude": -34.905988,
+                    "longitude": -56.199592,
+                    "phone": "+59898765432",
+                    "name": "Oficina Ciudad Vieja",
+                    "instructions": "El ascensor esta roto."
+                  },
+                  {
+                    "type": "DROP_OFF",
+                    "latitude": -34.9138414,
+                    "longitude": -56.1837661,
+                    "addressStreet": "La Cumparsita 1475",
+                    "addressAdditional": "Piso 1, Oficina Delivery",
+                    "city": "Montevideo",
+                    "phone": "+59812345678",
+                    "name": "Agustin",
+                    "instructions": "Entregar en mano",
+                    "collectMoney": 125
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingOrderResponse"
+                }
+              }
+            },
+            "description": "Shipping order created and confirmed"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestResponse"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "We were not able to find lat/long for waypoint/s in order: 1",
+                  "code": "WAYPOINTS_NOT_FOUND"
+                }
+              }
+            },
+            "description": "Warning or error in body's request fields or in body's json"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 500,
+                  "message": "Internal server error, please contact support"
+                }
+              }
+            },
+            "description": "Internal Server Errors, please contact support"
+          }
+        },
+        "summary": "Shipping Order",
+        "description": "Creation of Orders in a single step. You could indicate a deliveryTime (date and time) in UTC format; if it is not indicated, as soon as possible will be assumed.\n\nIn the response to this request, you will receive a 'confirmation code'. Use this 'Confirmation Code' when you need to contact the PedidosYa call center in case of a problem with the shipping order."
+      },
+      "get": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "example": "2023-02-20",
+            "name": "fromDate",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "maxLength": 10,
+              "minLength": 10
+            },
+            "description": "Initial date to query shippings",
+            "in": "query",
+            "required": true,
+            "allowEmptyValue": false
+          },
+          {
+            "deprecated": false,
+            "example": "2023-02-25",
+            "name": "toDate",
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "maxLength": 10,
+              "minLength": 10
+            },
+            "description": "Final date to query shippings",
+            "in": "query",
+            "required": true,
+            "allowEmptyValue": false
+          },
+          {
+            "deprecated": false,
+            "example": "",
+            "name": "nextPageId",
+            "description": "This is the offset for fetching next page results. Provided by original query response.",
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "required": false,
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingsResponse"
+                },
+                "example": {
+                  "nextPageId": "asbajhbd-123-sfasf-85h5hh-asddsad",
+                  "items": [
+                    {
+                      "shippingId": "15562302161051079717688",
+                      "confirmationCode": "141150433",
+                      "isTest": false,
+                      "referenceId": "Reference 123",
+                      "status": "CANCELLED",
+                      "cancelReason": "Canceled by user",
+                      "cancelCode": "USER_CANCELLED",
+                      "createdAt": "2023-02-16T10:51:07Z",
+                      "lastUpdated": "2023-02-16T11:23:46Z",
+                      "proofOfDelivery": false,
+                      "shareLocationUrl": "https://example-courier-web.pedidosya.com.uy/tracking/ME1NTY=",
+                      "notificationMail": "email@email.com",
+                      "onlineSupportUrl": "https://example-care-center.pedidosya.com/activity/8e2b09fb?key=pvBEpUYDxMNUp9I70CRrRokPQ%3D%3D",
+                      "items": [
+                        {
+                          "value": 500,
+                          "description": "Teclado mecánico Anne Pro 2",
+                          "sku": "ABC123",
+                          "volume": 1,
+                          "weight": 1,
+                          "quantity": 2,
+                          "type": "STANDARD"
+                        },
+                        {
+                          "value": 100,
+                          "description": "Teclado mecánico Anne Pro 2",
+                          "sku": "ABC124",
+                          "volume": 1,
+                          "weight": 1,
+                          "quantity": 2,
+                          "type": "STANDARD"
+                        }
+                      ],
+                      "waypoints": [
+                        {
+                          "type": "PICK_UP",
+                          "addressStreet": "Marco Bruto 1210",
+                          "city": "Montevideo",
+                          "latitude": -34.9057308,
+                          "longitude": -56.1381682,
+                          "phone": "+5981135344343",
+                          "name": "jorge guitierrez",
+                          "instructions": "prueta verde "
+                        },
+                        {
+                          "type": "DROP_OFF",
+                          "addressStreet": "Marco Bruto 1200",
+                          "city": "Montevideo",
+                          "latitude": -34.9061331,
+                          "longitude": -56.1381033,
+                          "phone": "+541144154415",
+                          "name": "martin test"
+                        }
+                      ],
+                      "route": {
+                        "deliveryMode": "CROSS_DOCKING",
+                        "estimatedPickUpTime": "2023-02-16T13:00:00Z",
+                        "estimatedDrivingTime": 120,
+                        "deliveryTimeFrom": "2023-02-16T15:00:00Z",
+                        "deliveryTimeTo": "2023-02-16T18:00:00Z",
+                        "distance": 54,
+                        "pricing": {
+                          "subTotal": 180,
+                          "taxes": 0,
+                          "total": 180,
+                          "currency": "UYU"
+                        }
+                      }
+                    },
+                    {
+                      "shippingId": "15562302161927091277656",
+                      "isTest": false,
+                      "referenceId": "TestIsTestFalse",
+                      "createdAt": "2023-02-16T19:27:09Z",
+                      "lastUpdated": "2023-02-16T19:27:09Z",
+                      "status": "CONFIRMED",
+                      "confirmationCode": "141150632",
+                      "proofOfDelivery": false,
+                      "shareLocationUrl": "https://example-courier-web.pedidosya.com.uy/tracking/zE1NTY=",
+                      "notificationMail": "other@gmail.com",
+                      "onlineSupportUrl": "https://example-care-center.pedidosya.com/activity/b?key=p%2jA%3D%3D",
+                      "items": [
+                        {
+                          "value": 500,
+                          "description": "Teclado mecánico Anne Pro 2",
+                          "sku": "ABC123",
+                          "volume": 1,
+                          "weight": 1,
+                          "quantity": 2,
+                          "type": "STANDARD"
+                        },
+                        {
+                          "value": 100,
+                          "description": "Teclado mecánico Anne Pro 2",
+                          "sku": "ABC124",
+                          "volume": 1,
+                          "weight": 1,
+                          "quantity": 2,
+                          "type": "STANDARD"
+                        }
+                      ],
+                      "waypoints": [
+                        {
+                          "type": "PICK_UP",
+                          "addressStreet": "Marco Bruto 1210",
+                          "city": "Montevideo",
+                          "latitude": -34.9057308,
+                          "longitude": -56.1381682,
+                          "phone": "+5981135344343",
+                          "name": "jorge guitierrez",
+                          "instructions": "prueta verde "
+                        },
+                        {
+                          "type": "DROP_OFF",
+                          "addressStreet": "Marco Bruto 1200",
+                          "city": "Montevideo",
+                          "latitude": -34.9061331,
+                          "longitude": -56.1381033,
+                          "phone": "+541144154415",
+                          "name": "martin test"
+                        }
+                      ],
+                      "route": {
+                        "deliveryMode": "CROSS_DOCKING",
+                        "estimatedPickUpTime": "2023-02-17T13:00:00Z",
+                        "estimatedDrivingTime": 120,
+                        "deliveryTimeFrom": "2023-02-17T15:00:00Z",
+                        "deliveryTimeTo": "2023-02-17T18:00:00Z",
+                        "distance": 54,
+                        "pricing": {
+                          "subTotal": 180,
+                          "taxes": 0,
+                          "total": 180,
+                          "currency": "UYU"
+                        }
+                      }
+                    },
+                    {
+                      "shippingId": "15562302161933300562594",
+                      "isTest": false,
+                      "referenceId": "TestIsTestFalse",
+                      "createdAt": "2023-02-16T19:33:30Z",
+                      "lastUpdated": "2023-02-16T22:55:42Z",
+                      "status": "CANCELLED",
+                      "confirmationCode": "141150634",
+                      "cancelReason": "Test",
+                      "cancelCode": "USER_CANCELLED",
+                      "proofOfDelivery": false,
+                      "shareLocationUrl": "https://example-courier-web.pedidosya.com.uy/tracking/NTY=",
+                      "onlineSupportUrl": "https://example-care-center.pedidosya.com/activity/8b09fb?key=pvWVVWXUlniQ%3D%3D",
+                      "items": [
+                        {
+                          "value": 500,
+                          "description": "Teclado mecánico Anne Pro 2",
+                          "sku": "ABC123",
+                          "volume": 1,
+                          "weight": 1,
+                          "quantity": 2,
+                          "type": "STANDARD"
+                        },
+                        {
+                          "value": 100,
+                          "description": "Teclado mecánico Anne Pro 2",
+                          "sku": "ABC124",
+                          "volume": 1,
+                          "weight": 1,
+                          "quantity": 2,
+                          "type": "STANDARD"
+                        }
+                      ],
+                      "waypoints": [
+                        {
+                          "type": "PICK_UP",
+                          "addressStreet": "Marco Bruto 1210",
+                          "city": "Montevideo",
+                          "latitude": -34.9057308,
+                          "longitude": -56.1381682,
+                          "phone": "+5981135344343",
+                          "name": "jorge guitierrez",
+                          "instructions": "prueta verde "
+                        },
+                        {
+                          "type": "DROP_OFF",
+                          "addressStreet": "Marco Bruto 1200",
+                          "city": "Montevideo",
+                          "latitude": -34.9061331,
+                          "longitude": -56.1381033,
+                          "phone": "+541144154415",
+                          "name": "martin test"
+                        }
+                      ],
+                      "route": {
+                        "deliveryMode": "CROSS_DOCKING",
+                        "estimatedPickUpTime": "2023-02-17T13:00:00Z",
+                        "estimatedDrivingTime": 120,
+                        "deliveryTimeFrom": "2023-02-17T15:00:00Z",
+                        "deliveryTimeTo": "2023-02-17T18:00:00Z",
+                        "distance": 54,
+                        "pricing": {
+                          "subTotal": 180,
+                          "taxes": 0,
+                          "total": 180,
+                          "currency": "UYU"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Orders' list filtered by params"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Get Shipping Orders",
+        "description": "Returns shipping's list filtered by date. The range between fromDate and toDate cannot exceed from 15 days between them. Every response is limited to 100 shipping orders."
+      },
+      "x-last-modified": 1593182514276
+    },
+    "/v3/shippings/{shippingId}": {
+      "summary": "Shipping Order Details",
+      "get": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "shippingId",
+            "description": "Shipping Id",
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9]+",
+              "maxLength": 255,
+              "description": "Shipping order identification"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingResponse"
+                },
+                "example": {
+                  "shippingId": "15562302161927091277656",
+                  "isTest": false,
+                  "referenceId": "TestIsTestFalse",
+                  "createdAt": "2023-02-16T19:27:09Z",
+                  "lastUpdated": "2023-02-16T19:27:09Z",
+                  "status": "CONFIRMED",
+                  "confirmationCode": "141150632",
+                  "proofOfDelivery": false,
+                  "shareLocationUrl": "https://example-courier-web.pedidosya.com.uy/tracking/zE1NTY=",
+                  "notificationMail": "other@gmail.com",
+                  "onlineSupportUrl": "https://example-care-center.pedidosya.com/activity/b?key=p%2jA%3D%3D",
+                  "items": [
+                    {
+                      "value": 500,
+                      "description": "Teclado mecánico Anne Pro 2",
+                      "sku": "ABC123",
+                      "volume": 1,
+                      "weight": 1,
+                      "quantity": 2,
+                      "type": "STANDARD"
+                    },
+                    {
+                      "value": 100,
+                      "description": "Teclado mecánico Anne Pro 2",
+                      "sku": "ABC124",
+                      "volume": 1,
+                      "weight": 1,
+                      "quantity": 2,
+                      "type": "STANDARD"
+                    }
+                  ],
+                  "waypoints": [
+                    {
+                      "type": "PICK_UP",
+                      "addressStreet": "Marco Bruto 1210",
+                      "city": "Montevideo",
+                      "latitude": -34.9057308,
+                      "longitude": -56.1381682,
+                      "phone": "+5981135344343",
+                      "name": "jorge guitierrez",
+                      "instructions": "prueta verde "
+                    },
+                    {
+                      "type": "DROP_OFF",
+                      "addressStreet": "Marco Bruto 1200",
+                      "city": "Montevideo",
+                      "latitude": -34.9061331,
+                      "longitude": -56.1381033,
+                      "phone": "+541144154415",
+                      "name": "martin test"
+                    }
+                  ],
+                  "route": {
+                    "deliveryMode": "CROSS_DOCKING",
+                    "estimatedPickUpTime": "2023-02-17T13:00:00Z",
+                    "estimatedDrivingTime": 120,
+                    "deliveryTimeFrom": "2023-02-17T15:00:00Z",
+                    "deliveryTimeTo": "2023-02-17T18:00:00Z",
+                    "distance": 54,
+                    "pricing": {
+                      "subTotal": 180,
+                      "taxes": 0,
+                      "total": 180,
+                      "currency": "UYU"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Shipping details",
+            "x-last-modified": 1595339388902
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestPathParam"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "Invalid id parameter. Only characters [a-z], [A-Z], [0-9] and '-' are accepted",
+                  "code": "INVALID_PARAM"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "Shipping order not found"
+                }
+              }
+            },
+            "description": "Shipping order not found"
+          }
+        },
+        "summary": "Get Shipping Order Details",
+        "description": "Returns shipping order details including delivery time, Id, status, waypoints, etc."
+      }
+    },
+    "/v3/shippings/{shippingId}/cancel": {
+      "post": {
+        "requestBody": {
+          "description": "Cancel shipping order. Reason is required.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelRequest"
+              },
+              "example": {
+                "reasonText": "Reason explanation for cancellation request"
+              }
+            }
+          },
+          "required": true
+        },
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "shippingId",
+            "schema": {
+              "type": "string",
+              "pattern": "[a-zA-Z0-9-]+",
+              "maxLength": 255
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShippingResponseUpdated"
+                },
+                "example": {
+                  "shippingId": "15562302161933300562594",
+                  "isTest": false,
+                  "referenceId": "Order 1234",
+                  "createdAt": "2023-02-16T19:33:30Z",
+                  "lastUpdated": "2023-02-16T22:55:42Z",
+                  "status": "CANCELLED",
+                  "confirmationCode": "141150634",
+                  "cancelReason": "Cancelado por el usuario",
+                  "cancelCode": "USER_CANCELLED",
+                  "proofOfDelivery": false,
+                  "shareLocationUrl": "https://example-courier-web.pedidosya.com.uy/tracking/QVBJIzE1NTY=",
+                  "notificationMail": "example@example.com",
+                  "onlineSupportUrl": "https://example-care-center.pedidosya.com/activity/-8734a3eb09fb?key=iLgHC2HwG%2Bu7f%2BK%niQ%3D%3D",
+                  "items": [
+                    {
+                      "value": 500,
+                      "description": "Teclado mecánico Anne Pro 2",
+                      "sku": "ABC123",
+                      "volume": 1,
+                      "weight": 1,
+                      "quantity": 2,
+                      "type": "STANDARD"
+                    },
+                    {
+                      "value": 100,
+                      "description": "Teclado mecánico Anne Pro 2",
+                      "sku": "ABC122",
+                      "volume": 1,
+                      "weight": 1,
+                      "quantity": 2,
+                      "type": "STANDARD"
+                    }
+                  ],
+                  "waypoints": [
+                    {
+                      "type": "PICK_UP",
+                      "addressStreet": "Marco Bruto 1210",
+                      "city": "Montevideo",
+                      "latitude": -34.9057308,
+                      "longitude": -56.1381682,
+                      "phone": "+5981135344343",
+                      "name": "jorge guitierrez",
+                      "instructions": "prueta verde "
+                    },
+                    {
+                      "type": "DROP_OFF",
+                      "addressStreet": "Marco Bruto 1200",
+                      "city": "Montevideo",
+                      "latitude": -34.9061331,
+                      "longitude": -56.1381033,
+                      "phone": "+541144154415",
+                      "name": "martin test"
+                    }
+                  ],
+                  "route": {
+                    "deliveryMode": "CROSS_DOCKING",
+                    "estimatedPickUpTime": "2023-02-17T13:00:00Z",
+                    "estimatedDrivingTime": 120,
+                    "deliveryTimeFrom": "2023-02-17T15:00:00Z",
+                    "deliveryTimeTo": "2023-02-17T18:00:00Z",
+                    "distance": 54,
+                    "pricing": {
+                      "subTotal": 180,
+                      "taxes": 0,
+                      "total": 180,
+                      "currency": "UYU"
+                    }
+                  }
+                }
+              }
+            },
+            "description": "Shipping Cancelled"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "Shipping not found"
+                }
+              }
+            },
+            "description": "Shipping not found or incorrect status"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 409,
+                  "message": "Shipping order can't be cancelled. Wrong Shipping number or current state."
+                }
+              }
+            },
+            "description": "Request in conflict."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 500,
+                  "message": "Internal server error, please contact support"
+                }
+              }
+            },
+            "description": "Internal Server Errors, please contact support"
+          }
+        },
+        "summary": "Cancel Shipping Order",
+        "description": "Cancel shipping order. Only shipping's in \"CONFIRMED\" status can be canceled using this endpoint. Once shipping order has \"IN_PROGRESS\" status, it's necessary to contact PedidosYA for cancellation request. More information about cancellations <a href='https://developers.pedidosya.com/courier-doc/shipping-creation#shipping-cancelation' target='_blank'>here</a>."
+      }
+    },
+    "/v3/shippings/{shippingId}/tracking": {
+      "summary": "Shipping Order Tracking",
+      "description": "Information about shipping order current location.",
+      "get": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "shippingId",
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9]+",
+              "maxLength": 255,
+              "description": "Shipping order identification"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrackingResponse"
+                },
+                "example": {
+                  "latitude": -34.905988,
+                  "longitude": -56.199592,
+                  "deliveryName": "Tim",
+                  "estimatedPickUpTime": "2020-07-21T17:32:28Z",
+                  "estimatedDropOffTime": "2020-07-21T17:40:28Z",
+                  "deliveryTransport": "Bike"
+                }
+              }
+            },
+            "description": "Tracking info for shipping order.",
+            "x-last-modified": 1593431507958
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestPathParam"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "Invalid id parameter. Only characters [a-z], [A-Z], [0-9] and '-' are accepted",
+                  "code": "INVALID_PARAM"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "No tracking information available."
+                }
+              }
+            },
+            "description": "No tracking information available. Remember that tracking info is available from states IN_PROGRESS to COMPLETED or CANCELLED"
+          }
+        },
+        "summary": "Get Shipping Order Tracking",
+        "description": "It returns the current location from shipping order (latitude, longitude) and a dyanamic estimation time for pick up and dropoff. Shipping order status should be \"IN_PROGRESS\" at least, this means that the shipping order was accepted by a rider. The current location is updated between 30 seconds and 1 minute, please don't ask for this information in an insistent way to avoid reach the Request Rate Limit and block the response."
+      },
+      "x-last-modified": 1593195812580
+    },
+    "/v3/shippings/{shippingId}/proofOfDelivery": {
+      "summary": "Shipping Order Proof of Delivery",
+      "get": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "shippingId",
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9]+",
+              "maxLength": 255,
+              "description": "Shipping order identification"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "proofOfDelivery": {
+                      "type": "string",
+                      "format": "binary",
+                      "description": "JPG image in base64 format with a proof of delivery."
+                    }
+                  }
+                },
+                "example": {
+                  "proofOfDelivery": "{string_value_for_proof_of_delivery_image_base64}"
+                }
+              }
+            },
+            "description": "Shipping's proof of delivery.",
+            "x-last-modified": 1593431507958
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPBadRequestPathParam"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "Invalid id parameter. Only characters [a-z], [A-Z], [0-9] and '-' are accepted",
+                  "code": "INVALID_PARAM"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "No shipping's proof of delivery available."
+                }
+              }
+            },
+            "description": "No shipping's proof of delivery available."
+          }
+        },
+        "summary": "Get Shipping Order Proof of Delivery",
+        "description": "It returns the shipping's proof of delivery in a base64 format JPG image. It could also returns HTTP Status Code 404 if the shipping doesn't have a proof of delivery.\n"
+      },
+      "x-last-modified": 1593195812580
+    },
+    "/v3/shippings/{shippingId}/proofOfDelivery/pin": {
+      "summary": "Shipping Order Proof of Delivery PIN type",
+      "get": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "shippingId",
+            "schema": {
+              "type": "string",
+              "pattern": "[0-9]+"
+            },
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pin": {
+                      "type": "string",
+                      "description": "PIN security code"
+                    }
+                  }
+                },
+                "example": {
+                  "pin": "1357"
+                }
+              }
+            },
+            "description": "Shipping's proof of delivery PIN security code."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPInvalidParamResponse"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "Invalid id parameter. Only characters [a-z], [A-Z], [0-9] and '-' are accepted",
+                  "code": "INVALID_PARAM"
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "Not found."
+                }
+              }
+            },
+            "description": "No shipping's proof of delivery PIN available."
+          }
+        },
+        "summary": "Get Shipping Order Proof of Delivery PIN type",
+        "description": "It returns the shipping's proof of delivery PIN security code. It could also returns HTTP Status Code 404 if the shipping doesn't have a proof of delivery. \n\n This functionality must be configured under commercial agreements, if you need this option please contact PedidosYa account manager. More information about this feature <a href='https://developers.pedidosya.com/courier-doc/shipping-delivery#get-delivery-validation-pin' target='_blank'>here</a>."
+      },
+      "x-last-modified": 1593195812580
+    },
+    "/v3/shippings/labels": {
+      "get": {
+        "tags": [
+          "Shippings"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "example": "1234,5678",
+            "name": "values",
+            "schema": {
+              "type": "string",
+              "format": "string",
+              "maxLength": 255,
+              "minLength": 1
+            },
+            "description": "List of order ids for which you want to generate labels. /v3/shippings/labels?values={shippingIds}. Each value of shippingIds should be separated by commas.",
+            "in": "query",
+            "required": true,
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "headers": {
+              "Content-Disposition": {
+                "required": true,
+                "deprecated": false,
+                "schema": {
+                  "format": "",
+                  "pattern": "",
+                  "type": "string",
+                  "example": "attachment; filename=Labels - 2022-08-23_19:59:11.pdf"
+                },
+                "description": "Content Disposition Header"
+              },
+              "Content-Type": {
+                "required": true,
+                "deprecated": false,
+                "schema": {
+                  "format": "",
+                  "pattern": "",
+                  "type": "string",
+                  "example": "application/pdf"
+                },
+                "description": "Content Type Header"
+              }
+            },
+            "description": "PDF file with labels."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponseLabels"
+                },
+                "examples": {
+                  "Invalid value parameter": {
+                    "value": {
+                      "status": 400,
+                      "code": "INVALID_QUERY_PARAM",
+                      "message": "Invalid ShippingId parameter. Only characters [0-9] are accepted."
+                    }
+                  },
+                  "Invalid length parameter": {
+                    "value": {
+                      "status": 400,
+                      "code": "INVALID_QUERY_PARAM",
+                      "message": "The shippingId parameter cannot exceed 255 characters"
+                    }
+                  },
+                  "Shipping data not found or with invalid permissions.": {
+                    "value": {
+                      "status": 400,
+                      "code": "SHIPPING_DATA_NOT_FOUND",
+                      "message": "Shippings with id: [shippingId] not found or you have insufficient permissions."
+                    }
+                  },
+                  "Invalid shipping data": {
+                    "value": {
+                      "status": 400,
+                      "code": "INVALID_SHIPPING_DATA",
+                      "message": "Shippings: [{Id: 1234567 status: EXPIRED}] with invalid data."
+                    }
+                  },
+                  "Invalid max labels quantity": {
+                    "value": {
+                      "status": 400,
+                      "code": "INVALID_MAX_LABELS_QUANTITY",
+                      "message": "Invalid max labels quantity. Max label quantity is: 50."
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "examples": {
+                  "Unknown server error": {
+                    "value": {
+                      "status": 500,
+                      "detail": "Unknown internal server error.",
+                      "code": "INTERNAL_ERROR"
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Labels",
+        "description": "This endpoint provides label for identify your shipments once confirmed, you can generate from one to maximum fifty labels, the response is a single binary file in PDF format."
+      }
+    },
+    "/v3/webhooks-configuration": {
+      "summary": "Webhooks Configuration",
+      "description": "Webhooks configuration endpoints",
+      "get": {
+        "tags": [
+          "Webhooks Configuration"
+        ],
+        "parameters": [
+          {
+            "name": "isTest",
+            "description": "if it is not present, it does not apply any filter on the isTest field. The isTest attribute allows the configuration of a second webhook for testing/develop environment.",
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhooksConfigModel"
+                }
+              }
+            },
+            "description": "Returns the webhooks configuration for the selected environment.",
+            "x-last-modified": 1593197399113
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Get Webhooks Configuration",
+        "description": "Returns the webhooks configuration for a specific environment filtered by isTest query param."
+      },
+      "put": {
+        "requestBody": {
+          "description": "Webhooks configuration",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WebhooksConfigModel"
+              }
+            }
+          },
+          "required": true
+        },
+        "tags": [
+          "Webhooks Configuration"
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhooksConfigModel"
+                }
+              }
+            },
+            "description": "Webhooks configuration setup completed - OK",
+            "x-last-modified": 1593195961137
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 400,
+                  "message": "Could not decode a JSON string due to invalid JSON."
+                }
+              }
+            },
+            "description": "Bad Request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Set or Update Webhooks Configuration",
+        "description": "Set or update the Webhooks configuration. \n\nEndpoint looks like: https://your_callback_url/\n\nAdditionally, an authorization key could be provided for security purposes. You may or may not set an authorizationKey, if required, we will send this in the authorization header of the post request. \n\nIt's your responsibility to protect your callbacks urls so that no-one else but us can invoke them. This can be achieved simply by setting the authorizationKey in this endpoint. In that case we will call your endpoint like: POST https://your_callback_url and Authorization and x-api-key header with the value you set. You should validate the key on your side when the callback is being invoked. \n\nIt is possible to set a maximum of three urls for each environment. The isTest attribute allows a webhook configuration for testing/develop environment.\n\n"
+      },
+      "delete": {
+        "tags": [
+          "Webhooks Configuration"
+        ],
+        "parameters": [
+          {
+            "deprecated": false,
+            "name": "topic",
+            "example": "SHIPPING_STATUS",
+            "schema": {
+              "type": "string",
+              "pattern": "[a-zA-Z-0-9-]+",
+              "maxLength": 255
+            },
+            "in": "query",
+            "required": true
+          },
+          {
+            "name": "isTest",
+            "description": "If it is not set, it takes the default value (false). The default value indicates the production (live) environment.",
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookConfiguration"
+                }
+              }
+            },
+            "description": "Return the Webhook Configuration removed"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 404,
+                  "message": "Webhook configuration Not Found"
+                }
+              }
+            },
+            "description": "Webhook configuration Not Found"
+          }
+        },
+        "summary": "Delete Webhooks configuration one by one",
+        "description": "Return the Webhook Configuration removed. If you want unsubscribe from the callbacks it is necessary to delete the records that you have previously configured, when using this endpoint if it is not indicated the default value is isTest=false"
+      },
+      "x-last-modified": 1593181557964
+    },
+    "/your-callback-url": {
+      "post": {
+        "tags": [
+          "Callback"
+        ],
+        "requestBody": {
+          "description": "Callback request",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CallbackRequest"
+              },
+              "examples": {
+                "SHIPPING_STATUS_CANCELLED": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "CANCELLED",
+                      "cancelCode": "NO_RIDER_AVAILABLE",
+                      "cancelReason": "No hay cadete disponible en este momento"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_CONFIRMED": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "confirmationCode": "9869921368",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "CONFIRMED",
+                      "estimatedPickUpTime": "2020-06-24T19:32:28Z",
+                      "estimatedDropOffTime": "2020-06-24T19:45:28Z"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_IN_PROGRESS": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "confirmationCode": "9869921368",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "IN_PROGRESS",
+                      "estimatedPickUpTime": "2020-06-24T19:32:28Z",
+                      "estimatedDropOffTime": "2020-06-24T19:45:28Z"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_NEAR_PICKUP": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "NEAR_PICKUP",
+                      "estimatedPickUpTime": "2020-06-24T19:32:28Z",
+                      "estimatedDropOffTime": "2020-06-24T19:45:28Z"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_PICKED_UP": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "confirmationCode": "9869921368",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "PICKED_UP",
+                      "estimatedDropOffTime": "2020-06-24T19:45:28Z"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_NEAR_DROPOFF": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "confirmationCode": "9869921368",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "NEAR_DROPOFF",
+                      "estimatedDropOffTime": "2020-06-24T19:45:28Z"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_COMPLETED": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "confirmationCode": "9869921368",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "COMPLETED"
+                    }
+                  }
+                },
+                "SHIPPING_STATUS_EXPIRED": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "ASDF-12345678",
+                    "referenceId": "Client Internal Reference",
+                    "generated": "2020-06-24T19:00:00Z",
+                    "transmitted": "2020-06-24T19:08:00Z",
+                    "data": {
+                      "status": "EXPIRED"
+                    }
+                  }
+                },
+                "SECURITY_CODE_CREATED": {
+                  "value": {
+                    "topic": "SHIPPING_STATUS",
+                    "id": "15562302281527156893283",
+                    "referenceId": "6543216354",
+                    "confirmationCode": "9869921368",
+                    "generated": "2023-03-01T10:27:17Z",
+                    "data": {
+                      "status": "SECURITY_CODE_CREATED",
+                      "estimatedPickUpTime": "2023-03-01T15:00:00Z",
+                      "estimatedDropOffTime": "2023-03-01T15:00:00Z",
+                      "securityType": "PIN",
+                      "securityCode": "65421"
+                    },
+                    "transmitted": "2023-03-01T10:27:17Z",
+                    "isTest": true
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Acknowledge",
+            "x-last-modified": 1593118081051
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPResponse"
+                },
+                "example": {
+                  "status": 403,
+                  "message": "Invalid access token"
+                }
+              }
+            },
+            "description": "Forbidden"
+          }
+        },
+        "summary": "Post Any Callback Event",
+        "description": "All shipping order callbacks will include fields defined in the request payload.\n\nThe callback url and the authorizationKey must be configured in PUT /v3/webhooks-configuration.  Your callback url will be invoked every time an event occurs over your shipping orders.\n\nYour callback endpoint should respond with http status code 200 for acknowledgement. Otherwise, we will retry invoking your endpoint once again after 10 minutes. Note that we cannot guarantee the order in which callbacks will arrive at your end.\n\nIt's your responsibility to protect your callbacks so that no-one else but us can invoke them. This can be achieved simply by setting the authorizationKey. In that case we will call your endpoint like: POST \nhttps://your_callback_url and Authorization and x-api-key headers with the value 'your_security_key'. You should validate the key on your side when the callback is being invoked."
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPInvalidParamResponse": {
+        "type": "object",
+        "description": "HTTP response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "The parameter in path request can´t exceed 255 characters"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code that indicates the error's origin:\n*INVALID_PARAM: Invalid parameter in path request.",
+            "example": "INVALID_PARAM"
+          }
+        }
+      },
+      "WaypointCoverage": {
+        "type": "object",
+        "description": "Waypoint to estimate coverage. You must set properties: addressStreet & city or latitude & longitude",
+        "properties": {
+          "addressStreet": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Address information including street name and door number."
+          },
+          "city": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Geographical point's city name. For example: Buenos Aires (AR), Antofagasta (CL), Montevideo (UY)."
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Geographical point latitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Geographical point longitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PICK_UP",
+              "DROP_OFF"
+            ],
+            "description": "What transport should do in that point. Only 1 Pickup is allowed."
+          }
+        }
+      },
+      "CoverageRequest": {
+        "type": "object",
+        "description": "This model represents the waypoints coverage estimation request. Yoy have to provide addressStreet and city and optional latitude and longitude. You can also provide latitude and longitude only. If you provide addressStreet and city only we use those values to get the geolocation (latitude and longitude values).",
+        "required": [
+          "waypoints"
+        ],
+        "properties": {
+          "waypoints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WaypointCoverage"
+            }
+          }
+        }
+      },
+      "CoverageResponse": {
+        "description": "This model represents the waypoints coverage estimation response in v3.",
+        "type": "object",
+        "required": [
+          "status",
+          "message"
+        ],
+        "properties": {
+          "status": {
+            "type": "number",
+            "format": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "coverageStaticMap": {
+            "type": "string",
+            "format": "binary",
+            "description": "Return an optional JPG image in base64 format, which shows a static map with the waypoints rendered on it. This feature can be enabled by setting the query parameter 'mapRequired' to 'true'. If not specified, the map will not be included in the response."
+          }
+        }
+      },
+      "Route": {
+        "description": "Info related to waypoints geographic analysis.",
+        "type": "object",
+        "properties": {
+          "distance": {
+            "type": "number",
+            "format": "double",
+            "description": "Shipping total distance in meters"
+          }
+        },
+        "example": {
+          "distance": 100
+        }
+      },
+      "ShippingRoute": {
+        "description": "Route assigned to the shipping. This field has data related to delivery type, price and times info.",
+        "type": "object",
+        "properties": {
+          "deliveryMode": {
+            "type": "string",
+            "enum": [
+              "EXPRESS",
+              "SCHEDULED"
+            ],
+            "description": "Delivery mode. \n\nThe EXPRESS mode means a shipping order that will be delivered 'as soon as possible'. \n\nThe SCHEDULED mode means a shipping order that will be delivered 'in a specific time frame'."
+          },
+          "estimatedPickUpTime": {
+            "type": "string",
+            "description": "Estimated pick-up time in UTC. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ",
+            "format": "date-time"
+          },
+          "deliveryTimeFrom": {
+            "type": "string",
+            "description": "This is the minimum promised time limit for the order's delivery. (In UTC).",
+            "format": "date-time"
+          },
+          "deliveryTimeTo": {
+            "type": "string",
+            "description": "This is the maximum promised time limit for the order's delivery. (In UTC).",
+            "format": "date-time"
+          },
+          "distance": {
+            "type": "number",
+            "format": "double",
+            "description": "Shipping total distance in meters"
+          },
+          "pricing": {
+            "type": "object",
+            "description": "Delivery offer pricing information",
+            "properties": {
+              "subtotal": {
+                "type": "number",
+                "format": "double",
+                "description": "Shipping amount without taxes"
+              },
+              "taxes": {
+                "type": "number",
+                "format": "double",
+                "description": "Shipping taxes"
+              },
+              "total": {
+                "type": "number",
+                "format": "double",
+                "description": "Shipping total amount"
+              },
+              "currency": {
+                "type": "string",
+                "enum": [
+                  "UYU",
+                  "CLP",
+                  "ARS",
+                  "USD",
+                  "BRL",
+                  "COP",
+                  "PEN",
+                  "VES",
+                  "MXN",
+                  "PAB",
+                  "PYG",
+                  "CRC",
+                  "BOB",
+                  "DOP"
+                ],
+                "description": "Shipping amount's currency in ISO 4217 currency names."
+              }
+            }
+          }
+        }
+      },
+      "DeliveryOffer": {
+        "description": "Delivery offer available for the order. This field has data related to delivery type, price and times info.",
+        "type": "object",
+        "properties": {
+          "deliveryOfferId": {
+            "type": "string",
+            "description": "Delivery offer id. You need this deliveryOfferId to confirm a specific delivery offer from an estimation.",
+            "maxLength": 255
+          },
+          "deliveryMode": {
+            "type": "string",
+            "enum": [
+              "EXPRESS",
+              "SCHEDULED"
+            ],
+            "description": "Delivery mode. \n\nThe EXPRESS mode means a shipping order that will be delivered 'as soon as possible'. \n\nThe SCHEDULED mode means a shipping order that will be delivered 'in a specific time frame'."
+          },
+          "estimatedPickUpTime": {
+            "type": "string",
+            "description": "Estimated pick-up time in UTC. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ",
+            "format": "date-time"
+          },
+          "estimatedDrivingTime": {
+            "type": "integer",
+            "description": "Estimated rider driving time between pick-up geopoint and drop-off geopoint. This value is measured in minutes."
+          },
+          "deliveryTimeFrom": {
+            "type": "string",
+            "description": "This is the minimum promised time limit for the order's delivery. (In UTC).",
+            "format": "date-time"
+          },
+          "deliveryTimeTo": {
+            "type": "string",
+            "description": "This is the maximum promised time limit for the order's delivery. (In UTC).",
+            "format": "date-time"
+          },
+          "confirmationTimeLimit": {
+            "type": "string",
+            "description": "This is the time limit for confirming this deliveryOffer. You will not be able to confirm the deliveryOffer after this time limit. (In UTC)",
+            "format": "date-time"
+          },
+          "pricing": {
+            "type": "object",
+            "description": "Delivery offer pricing information",
+            "properties": {
+              "subtotal": {
+                "type": "number",
+                "format": "double",
+                "description": "Shipping amount without taxes"
+              },
+              "taxes": {
+                "type": "number",
+                "format": "double",
+                "description": "Shipping taxes"
+              },
+              "total": {
+                "type": "number",
+                "format": "double",
+                "description": "Shipping total amount"
+              },
+              "currency": {
+                "type": "string",
+                "enum": [
+                  "UYU",
+                  "CLP",
+                  "ARS",
+                  "USD",
+                  "BRL",
+                  "COP",
+                  "PEN",
+                  "VES",
+                  "MXN",
+                  "PAB",
+                  "PYG",
+                  "CRC",
+                  "BOB",
+                  "DOP"
+                ],
+                "description": "Shipping amount's currency in ISO 4217 currency names."
+              }
+            }
+          }
+        }
+      },
+      "WayPointModel": {
+        "description": "Geographical points where the transport should pick up OR drop off items.",
+        "type": "object",
+        "properties": {
+          "addressStreet": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Address information including street name and door number."
+          },
+          "addressAdditional": {
+            "type": "string",
+            "maxLength": 150,
+            "description": "Address information second line if needed. For example: apartment, etc."
+          },
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Geographical point latitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Geographical point longitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+          },
+          "phone": {
+            "type": "string",
+            "maxLength": 14,
+            "description": "Telephone number on geopoint. The phone format must be:\n* an optional prefix with the symbol +\n* only numbers, can't have letters\n* the number must start with a number between 1 and 9 and then 5 to 14 digits (0 to 9)"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 70,
+            "description": "Responsible on geopoint - Contact person"
+          },
+          "instructions": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Additional information when arriving to geopoint"
+          },
+          "city": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "Geographical point's city name. For example: Buenos Aires (AR), Antofagasta (CL), Montevideo (UY)."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PICK_UP",
+              "DROP_OFF"
+            ],
+            "description": "What transport should do in that point. Only 1 Pickup & 1 Dropoff is allowed to use"
+          },
+          "collectMoney": {
+            "type": "number",
+            "format": "double",
+            "description": "Specify the amount to collect at dropOff by rider. Only for waypoint type \"DROP_OFF\". This functionality is not turned on by default."
+          }
+        },
+        "required": [
+          "type",
+          "addressStreet",
+          "city",
+          "phone",
+          "name"
+        ]
+      },
+      "ShippingItemRequest": {
+        "type": "object",
+        "description": "Item's description. A package shipped could have multiple items.",
+        "required": [
+          "value",
+          "quantity",
+          "volume",
+          "weight",
+          "description"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Item type to know and calculate de best rider option",
+            "enum": [
+              "STANDARD",
+              "FRAGILE",
+              "COLD"
+            ],
+            "default": "STANDARD"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "maximum": 1000000,
+            "description": "Value of the item shipped. Min value major to 0 and max value is 1M (one million). The maximum allowed value will depend on the insured coverage, and the calculation is made by summing up all the items submitted.\""
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 235,
+            "description": "Description of the item shipped"
+          },
+          "sku": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Item SKU identifier"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "description": "Quantity of the same item. Min value 1, and max value is 10000"
+          },
+          "volume": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "maximum": 80840,
+            "description": "Item's volume in cm3. Min value 0.00, and max value is 80840.00 (47*43*40cm3)"
+          },
+          "weight": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "maximum": 10,
+            "description": "Weight of a unit of the item in kilograms with two decimals. Min value is 0.00, and max value is 20.00 kg"
+          }
+        }
+      },
+      "ShippingRequest": {
+        "description": "This model represents an order that must be created. ",
+        "type": "object",
+        "required": [
+          "items",
+          "waypoints",
+          "referenceId"
+        ],
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID. This value will be used by the rider to identify the shipping order in pickup point. ",
+            "maxLength": 255
+          },
+          "deliveryTime": {
+            "type": "string",
+            "description": "Desired delivery time in UTC, for example, 2023-01-21T12:21:00Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ. This time is the shipping's first destination - drop off time. If the fleet is busy we could change this time with the fleet delay. The desired time must be in PedidosYa fleet's schedules. You can get the schedules in the endpoint <a href='#tag/Schedules/paths/~1v3~1schedules/get'>Get Schedules</a>",
+            "format": "date-time",
+            "default": "YYYY-MM-DDTHH:MM:SSZ (as soon as possible)"
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "If you are creating a TEST shipping, set this field true",
+            "enum": [
+              true,
+              false
+            ],
+            "default": false
+          },
+          "items": {
+            "description": "List of items shipped in the package. There must be at least one item and less than a hundred. The sum of the declared values for each item must be less than a million.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping status by confirmation, in progress, completed or cancellation notifications to the end user.",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "referenceId": "Client Internal Reference",
+          "deliveryTime": "2023-01-21T12:21:00Z",
+          "isTest": true,
+          "notificationMail": "email@email.com",
+          "items": [
+            {
+              "type": "STANDARD",
+              "value": 1250.6,
+              "description": "Some book.",
+              "sku": "ABC123",
+              "quantity": 1,
+              "volume": 10.01,
+              "weight": 0.5
+            },
+            {
+              "type": "STANDARD",
+              "value": 250,
+              "description": "T-Shirt",
+              "sku": "ABC124",
+              "quantity": 1,
+              "volume": 10.01,
+              "weight": 0.3
+            }
+          ],
+          "waypoints": [
+            {
+              "type": "PICK_UP",
+              "addressStreet": "Plaza Independencia 755",
+              "addressAdditional": "Piso 6 Recepción",
+              "city": "Montevideo",
+              "latitude": -34.905988,
+              "longitude": -56.199592,
+              "phone": "+59898765432",
+              "name": "Oficina Ciudad Vieja",
+              "instructions": "El ascensor esta roto."
+            },
+            {
+              "type": "DROP_OFF",
+              "latitude": -34.9138414,
+              "longitude": -56.1837661,
+              "addressStreet": "La Cumparsita 1475",
+              "addressAdditional": "Piso 1, Oficina Delivery",
+              "city": "Montevideo",
+              "phone": "+59812345678",
+              "name": "Agustin",
+              "instructions": "Entregar en mano",
+              "collectMoney": 125
+            }
+          ]
+        }
+      },
+      "EstimationShippingRequest": {
+        "description": "This model represents an order that must be created. ",
+        "type": "object",
+        "required": [
+          "items",
+          "waypoints",
+          "referenceId"
+        ],
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID. This value will be used by the rider to identify the shipping order in pickup point. ",
+            "maxLength": 255
+          },
+          "deliveryTime": {
+            "type": "string",
+            "description": "Desired delivery time in UTC, for example, 2023-01-21T12:21:00Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ. This time is the shipping's first destination - drop off time. If the fleet is busy we could change this time with the fleet delay. The desired time must be in PedidosYa fleet's schedules. You can get the schedules in the endpoint <a href='#tag/Schedules/paths/~1v3~1schedules/get'>Get Schedules</a>",
+            "format": "date-time",
+            "default": "YYYY-MM-DDTHH:MM:SSZ (as soon as possible)"
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "If you are creating a TEST shipping, set this field true",
+            "enum": [
+              true,
+              false
+            ],
+            "default": false
+          },
+          "items": {
+            "description": "List of items shipped in the package. There must be at least one item and less than a hundred. The sum of the declared values for each item must be less than a million.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping confirmation and cancellation notifications to the end user.",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "referenceId": "Client Internal Reference",
+          "deliveryTime": "2023-01-21T12:21:00Z",
+          "isTest": true,
+          "notificationMail": "email@email.com",
+          "items": [
+            {
+              "type": "STANDARD",
+              "value": 1250.6,
+              "description": "Some book.",
+              "sku": "ABC123",
+              "quantity": 1,
+              "volume": 10.01,
+              "weight": 0.5
+            },
+            {
+              "type": "STANDARD",
+              "value": 250,
+              "description": "T-Shirt",
+              "sku": "ABC124",
+              "quantity": 1,
+              "volume": 10.01,
+              "weight": 0.3
+            }
+          ],
+          "waypoints": [
+            {
+              "type": "PICK_UP",
+              "addressStreet": "Plaza Independencia 755",
+              "addressAdditional": "Piso 6 Recepción",
+              "city": "Montevideo",
+              "latitude": -34.905988,
+              "longitude": -56.199592,
+              "phone": "+59898765432",
+              "name": "Oficina Ciudad Vieja",
+              "instructions": "El ascensor esta roto."
+            },
+            {
+              "type": "DROP_OFF",
+              "latitude": -34.9138414,
+              "longitude": -56.1837661,
+              "addressStreet": "La Cumparsita 1475",
+              "addressAdditional": "Piso 1, Oficina Delivery",
+              "city": "Montevideo",
+              "phone": "+59812345678",
+              "name": "Agustin",
+              "instructions": "Entregar en mano",
+              "collectMoney": 125
+            }
+          ]
+        }
+      },
+      "ShippingsResponse": {
+        "description": "This models represent a response for get shipping to obtain a list of orders.",
+        "type": "object",
+        "properties": {
+          "nextPageId": {
+            "type": "string",
+            "description": "This is the offset for fetching next page results. Provided by original query response."
+          },
+          "items": {
+            "type": "array",
+            "description": "List of shippings",
+            "items": {
+              "$ref": "#/components/schemas/ShippingResponseUpdated"
+            }
+          }
+        }
+      },
+      "ShippingOrderResponse": {
+        "description": "This model represents a shipping order response.",
+        "type": "object",
+        "properties": {
+          "shippingId": {
+            "type": "string",
+            "description": "Shipping identifier",
+            "maxLength": 255
+          },
+          "confirmationCode": {
+            "type": "string",
+            "description": "Confirmation code, this field is set when the shipping is CONFIRMED. Use this 'confirmationCode' when you have to contact PedidosYa call center in case of some issue with the shipping order.",
+            "maxLength": 255
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "Boolean that indicates if the shipping was created for testing or production purpose.If isTest = true then the shipping was created for testing/development purpose.",
+            "default": false
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID. This value will be used by the rider to identify the shipping order in pickup point. ",
+            "maxLength": 255
+          },
+          "status": {
+            "$ref": "#/components/schemas/ShippingStatus"
+          },
+          "proofOfDelivery": {
+            "type": "boolean",
+            "description": "This flag indicates whenever shipping order has proof of delivery. Proof of delivery could be either a signature or a photo. You can get the proof of delivery in this endpoint: <a href='#tag/Shippings/paths/~1v3~1shippings~1%7Bid%7D~1proofOfDelivery/get'>Get Shipping Order Proof of Delivery</a>. "
+          },
+          "shareLocationUrl": {
+            "description": "Shipping´s location URL map webpage. This allows you to track your shipping order using PedidosYa technologies.",
+            "type": "string",
+            "maxLength": 255
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping confirmation and cancellation notifications to the end user.",
+            "maxLength": 255
+          },
+          "onlineSupportUrl": {
+            "type": "string",
+            "description": "This field is set when the shipping is CONFIRMED. Online support url allows you to get instant support in case of some issue with the shipping order.",
+            "maxLength": 255
+          },
+          "items": {
+            "description": "List of items shipped in the package",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            }
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            }
+          },
+          "route": {
+            "$ref": "#/components/schemas/ShippingRoute"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Shipping created datetime in UTC. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          }
+        },
+        "example": {
+          "shippingId": "15562302281527156893283",
+          "confirmationCode": "9869921368",
+          "isTest": true,
+          "referenceId": "Order 12344",
+          "status": "CONFIRMED",
+          "proofOfDelivery": false,
+          "shareLocationUrl": "https://example.pedidosya.com.uy/tracking/MTUE1NTY=",
+          "notificationMail": "notification@email.com",
+          "onlineSupportUrl": "https://example.pedidosya.com/activity/8e2d49fb?key=pvWV0u3D%3D",
+          "items": [
+            {
+              "categoryId": 11986575,
+              "categoryName": "Envío",
+              "value": 500,
+              "description": "Teclado",
+              "sku": "ABC123",
+              "volume": 1,
+              "weight": 1,
+              "quantity": 2,
+              "type": "STANDARD"
+            },
+            {
+              "categoryId": 11986575,
+              "categoryName": "Envío",
+              "value": 100,
+              "description": "Teclado",
+              "volume": 1,
+              "weight": 1,
+              "quantity": 2,
+              "type": "STANDARD"
+            }
+          ],
+          "waypoints": [
+            {
+              "type": "PICK_UP",
+              "addressStreet": "Marco Bruto 1210",
+              "city": "Montevideo",
+              "latitude": -34.9057308,
+              "longitude": -56.1381682,
+              "phone": "+5981135344343",
+              "name": "Jorge Gutierrez",
+              "instructions": "prueta verde "
+            },
+            {
+              "type": "DROP_OFF",
+              "addressStreet": "Andes 1111",
+              "city": "Montevideo",
+              "latitude": -34.9108124,
+              "longitude": -56.1979015,
+              "phone": "+541144154415",
+              "name": "Martin Novo"
+            }
+          ],
+          "route": {
+            "deliveryMode": "CROSS_DOCKING",
+            "estimatedPickUpTime": "2023-03-01T13:00:00Z",
+            "estimatedDrivingTime": 120,
+            "deliveryTimeFrom": "2023-03-01T15:00:00Z",
+            "deliveryTimeTo": "2023-03-01T18:00:00Z",
+            "distance": 6030,
+            "pricing": {
+              "subTotal": 180,
+              "taxes": 0,
+              "total": 180,
+              "currency": "UYU"
+            }
+          },
+          "createdAt": "2023-02-28T15:27:15Z"
+        }
+      },
+      "ShippingResponseConfirmed": {
+        "description": "This model represents a shipping estimate order.",
+        "type": "object",
+        "properties": {
+          "estimateId": {
+            "type": "string",
+            "description": "Shipping estimate identifier",
+            "pattern": "[0-9]+",
+            "maxLength": 255
+          },
+          "shippingId": {
+            "type": "string",
+            "description": "Shipping identifier",
+            "maxLength": 255
+          },
+          "confirmationCode": {
+            "type": "string",
+            "description": "Confirmation code, this field is set when the shipping is CONFIRMED. Use this 'confirmationCode' when you have to contact PedidosYa call center in case of some issue with the shipping order.",
+            "maxLength": 255
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "Boolean that indicates if the shipping was created for testing or production purpose.If isTest = true then the shipping was created for testing/development purpose.",
+            "default": false
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID. This value will be used by the rider to identify the shipping order in pickup point. ",
+            "maxLength": 255
+          },
+          "status": {
+            "$ref": "#/components/schemas/ShippingStatus"
+          },
+          "proofOfDelivery": {
+            "type": "boolean",
+            "description": "This flag indicates whenever shipping order has proof of delivery. Proof of delivery could be either a signature or a photo. You can get the proof of delivery in this endpoint: <a href='#tag/Shippings/paths/~1v3~1shippings~1%7Bid%7D~1proofOfDelivery/get'>Get Shipping Order Proof of Delivery</a>. "
+          },
+          "shareLocationUrl": {
+            "description": "Shipping´s location URL map webpage. This allows you to track your shipping order using PedidosYa technologies.",
+            "type": "string",
+            "maxLength": 255
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping confirmation and cancellation notifications to the end user.",
+            "maxLength": 255
+          },
+          "onlineSupportUrl": {
+            "type": "string",
+            "description": "This field is set when the shipping is CONFIRMED. Online support url allows you to get instant support in case of some issue with the shipping order.",
+            "maxLength": 255
+          },
+          "items": {
+            "description": "List of items shipped in the package",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            }
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            }
+          },
+          "route": {
+            "$ref": "#/components/schemas/ShippingRoute"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Shipping created datetime in UTC. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          }
+        },
+        "example": {
+          "estimateId": "23562302281727155893283",
+          "shippingId": "15562302281527156893283",
+          "confirmationCode": "9869921368",
+          "isTest": true,
+          "referenceId": "Order 12344",
+          "status": "CONFIRMED",
+          "proofOfDelivery": false,
+          "shareLocationUrl": "https://example.pedidosya.com.uy/tracking/MTUE1NTY=",
+          "notificationMail": "notification@email.com",
+          "onlineSupportUrl": "https://example.pedidosya.com/activity/8e2d49fb?key=pvWV0u3D%3D",
+          "items": [
+            {
+              "categoryId": 11986575,
+              "categoryName": "Envío",
+              "value": 500,
+              "description": "Teclado",
+              "sku": "ABC123",
+              "volume": 1,
+              "weight": 1,
+              "quantity": 2,
+              "type": "STANDARD"
+            },
+            {
+              "categoryId": 11986575,
+              "categoryName": "Envío",
+              "value": 100,
+              "description": "Teclado",
+              "volume": 1,
+              "weight": 1,
+              "quantity": 2,
+              "type": "STANDARD"
+            }
+          ],
+          "waypoints": [
+            {
+              "type": "PICK_UP",
+              "addressStreet": "Marco Bruto 1210",
+              "city": "Montevideo",
+              "latitude": -34.9057308,
+              "longitude": -56.1381682,
+              "phone": "+5981135344343",
+              "name": "Jorge Gutierrez",
+              "instructions": "prueta verde "
+            },
+            {
+              "type": "DROP_OFF",
+              "addressStreet": "Andes 1111",
+              "city": "Montevideo",
+              "latitude": -34.9108124,
+              "longitude": -56.1979015,
+              "phone": "+541144154415",
+              "name": "Martin Novo"
+            }
+          ],
+          "route": {
+            "deliveryMode": "CROSS_DOCKING",
+            "estimatedPickUpTime": "2023-04-04T13:00:00Z",
+            "deliveryTimeFrom": "2023-04-04T23:00:00Z",
+            "deliveryTimeTo": "2023-04-05T02:00:00Z",
+            "distance": 6030,
+            "pricing": {
+              "subTotal": 180,
+              "taxes": 0,
+              "total": 180,
+              "currency": "UYU"
+            }
+          },
+          "createdAt": "2023-02-28T15:27:15Z"
+        }
+      },
+      "ShippingResponseUpdated": {
+        "description": "This model represents a shipping updated order.",
+        "type": "object",
+        "properties": {
+          "shippingId": {
+            "type": "string",
+            "description": "Shipping identifier",
+            "maxLength": 255
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "If you are creating a TEST shipping, set this field true",
+            "default": false
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID",
+            "maxLength": 255
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Shipping created datetime in UTC. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last datetime (in UTC) when the item's info or status was updated. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ShippingStatus"
+          },
+          "confirmationCode": {
+            "type": "string",
+            "description": "Confirmation code, this field is set when the shipping is CONFIRMED.",
+            "maxLength": 255
+          },
+          "cancelCode": {
+            "$ref": "#/components/schemas/CancelCode"
+          },
+          "cancelReason": {
+            "type": "string",
+            "description": "Spanish message text for the cancel code. This field is setted only if status is CANCELLED.",
+            "maxLength": 255
+          },
+          "proofOfDelivery": {
+            "type": "boolean",
+            "description": "This flag indicates whenever shipping order has proof of delivery. Proof of delivery could be either a signature or a photo. You can get the proof of delivery in this endpoint: <a href='#tag/shippings/paths/~1v1~1shippings~1{id}~1proofOfDelivery/get'>Get Shipping Order Proof of Delivery</a>. "
+          },
+          "shareLocationUrl": {
+            "description": "Shipping´s location URL map webpage. This allows you to track your shipping order using PedidosYa technologies.",
+            "type": "string",
+            "maxLength": 255
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping confirmation and cancellation notifications to the end user."
+          },
+          "onlineSupportUrl": {
+            "type": "string",
+            "description": "This field is set when the shipping is CONFIRMED. Online support url allows you to get instant support in case of some issue with the shipping order.",
+            "maxLength": 255
+          },
+          "items": {
+            "description": "List of items shipped in the package",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            }
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            }
+          },
+          "route": {
+            "$ref": "#/components/schemas/ShippingRoute"
+          }
+        },
+        "example": {},
+        "x-last-modified": 1595339294576
+      },
+      "EstimationShippingResponse": {
+        "description": "This model represents a shipping estimate order.",
+        "type": "object",
+        "properties": {
+          "estimateId": {
+            "type": "string",
+            "description": "Shipping estimate identifier",
+            "maxLength": 255,
+            "pattern": "[0-9]+"
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID",
+            "maxLength": 255
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "If you are creating a TEST shipping, set this field true",
+            "default": false
+          },
+          "items": {
+            "description": "List of items shipped in the package",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            }
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            }
+          },
+          "deliveryOffers": {
+            "description": "Delivery offers available for the estimation. This field has data related to delivery type, price and times info.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeliveryOffer"
+            }
+          },
+          "route": {
+            "$ref": "#/components/schemas/Route"
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping confirmation and cancellation notifications to the end user.",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "estimateId": "520644687847638345",
+          "referenceId": "Client Internal Reference",
+          "isTest": true,
+          "items": [
+            {
+              "type": "STANDARD",
+              "value": 1250.6,
+              "description": "Some book.",
+              "sku": "ABC123",
+              "quantity": 1,
+              "volume": 10.01,
+              "weight": 0.5
+            }
+          ],
+          "waypoints": [
+            {
+              "type": "PICK_UP",
+              "addressStreet": "Plaza Independencia 755",
+              "addressAdditional": "Piso 6 Recepción",
+              "city": "Montevideo",
+              "latitude": -34.905988,
+              "longitude": -56.199592,
+              "phone": "+59898765432",
+              "name": "Oficina Ciudad Vieja",
+              "instructions": "El ascensor esta roto."
+            },
+            {
+              "type": "DROP_OFF",
+              "latitude": -34.9138414,
+              "longitude": -56.1837661,
+              "addressStreet": "La Cumparsita 1475",
+              "addressAdditional": "Piso 1, Oficina Delivery",
+              "city": "Montevideo",
+              "phone": "+59812345678",
+              "name": "Agustin",
+              "instructions": "Entregar en mano"
+            }
+          ],
+          "routes": {
+            "distance": 123
+          },
+          "deliveryOffers": [
+            {
+              "deliveryOfferId": "679db4989914e48805f3303eb29c4dec",
+              "deliveryMode": "EXPRESS",
+              "estimatedPickUpTime": null,
+              "estimatedDrivingTime": 15,
+              "deliveryTimeFrom": null,
+              "deliveryTimeTo": null,
+              "confirmationTimeLimit": "2022-12-13T13:37:00Z",
+              "pricing": {
+                "subTotal": 131.36,
+                "taxes": 0,
+                "total": 131.36,
+                "currency": "UYU"
+              }
+            },
+            {
+              "deliveryOfferId": "679db4989914e48805f3303eb29c4dec",
+              "deliveryMode": "SCHEDULE",
+              "estimatedPickUpTime": "2022-02-01T21:00:00Z",
+              "estimatedDrivingTime": null,
+              "deliveryTimeFrom": "2022-12-12T21:55:00Z",
+              "deliveryTimeTo": "2022-12-12T21:51:00Z",
+              "confirmationTimeLimit": "2022-12-13T13:37:00Z",
+              "pricing": {
+                "subTotal": 131.36,
+                "taxes": 0,
+                "total": 131.36,
+                "currency": "UYU"
+              }
+            },
+            {
+              "deliveryOfferId": "679db4989914e48805f3303eb29c4dec",
+              "deliveryMode": "CROSS_DOCKING",
+              "estimatedPickUpTime": "2022-02-01T21:00:00Z",
+              "estimatedDrivingTime": null,
+              "deliveryTimeFrom": "2022-12-12T21:55:00Z",
+              "deliveryTimeTo": "2022-12-12T21:51:00Z",
+              "confirmationTimeLimit": "2022-12-13T13:37:00Z",
+              "pricing": {
+                "subTotal": 131.36,
+                "taxes": 0,
+                "total": 131.36,
+                "currency": "UYU"
+              }
+            }
+          ],
+          "notificationMail": "email@email.com"
+        },
+        "x-last-modified": 1595339294576
+      },
+      "ShippingResponse": {
+        "description": "This model represents a shipping estimate order.",
+        "type": "object",
+        "properties": {
+          "shippingId": {
+            "type": "string",
+            "description": "Shipping estimate identifier",
+            "maxLength": 255,
+            "pattern": "[0-9]+"
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID",
+            "maxLength": 255
+          },
+          "isTest": {
+            "type": "boolean",
+            "description": "If you are creating a TEST shipping, set this field true",
+            "default": false
+          },
+          "items": {
+            "description": "List of items shipped in the package",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ShippingItemRequest"
+            }
+          },
+          "waypoints": {
+            "description": "Geographical points where transport should go. There must be two waypoints, one with type PICK_UP & one DROP_OFF. The geographical points must be inside the PedidosYa fleet's working zone. You can obtain the working zones in the endpoint <a href='#tag/Coverage/paths/~1v3~1working-zones/get'>Get Working Zones</a>.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WayPointModel"
+            }
+          },
+          "deliveryOffers": {
+            "description": "Delivery offers available for the estimation. This field has data related to delivery type, price and times info.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DeliveryOffer"
+            }
+          },
+          "route": {
+            "$ref": "#/components/schemas/Route"
+          },
+          "notificationMail": {
+            "type": "string",
+            "description": "This email will be used to send shipping confirmation and cancellation notifications to the end user.",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "shippingId": "520644687847638345",
+          "referenceId": "Client Internal Reference",
+          "isTest": true,
+          "items": [
+            {
+              "type": "STANDARD",
+              "value": 1250.6,
+              "description": "Some book.",
+              "sku": "ABC123",
+              "quantity": 1,
+              "volume": 10.01,
+              "weight": 0.5
+            }
+          ],
+          "waypoints": [
+            {
+              "type": "PICK_UP",
+              "addressStreet": "Plaza Independencia 755",
+              "addressAdditional": "Piso 6 Recepción",
+              "city": "Montevideo",
+              "latitude": -34.905988,
+              "longitude": -56.199592,
+              "phone": "+59898765432",
+              "name": "Oficina Ciudad Vieja",
+              "instructions": "El ascensor esta roto."
+            },
+            {
+              "type": "DROP_OFF",
+              "latitude": -34.9138414,
+              "longitude": -56.1837661,
+              "addressStreet": "La Cumparsita 1475",
+              "addressAdditional": "Piso 1, Oficina Delivery",
+              "city": "Montevideo",
+              "phone": "+59812345678",
+              "name": "Agustin",
+              "instructions": "Entregar en mano"
+            }
+          ],
+          "route": {
+            "deliveryMode": "CROSS_DOCKING",
+            "estimatedPickUpTime": "2023-02-17T13:00:00Z",
+            "estimatedDrivingTime": 120,
+            "deliveryTimeFrom": "2023-02-17T15:00:00Z",
+            "deliveryTimeTo": "2023-02-17T18:00:00Z",
+            "distance": 54,
+            "pricing": {
+              "subTotal": 180,
+              "taxes": 0,
+              "total": 180,
+              "currency": "UYU"
+            }
+          },
+          "notificationMail": "email@email.com"
+        },
+        "x-last-modified": 1595339294576
+      },
+      "WebhookConfiguration": {
+        "description": "Callback to different topics. Right now we only provide SHIPPING_STATUS topic, but more topics will be available in future.",
+        "type": "object",
+        "required": [
+          "notificationType",
+          "urls",
+          "topic"
+        ],
+        "properties": {
+          "isTest": {
+            "type": "boolean",
+            "description": "The isTest attribute allows the configuration of a second webhook for testing/develop environment."
+          },
+          "notificationType": {
+            "type": "string",
+            "enum": [
+              "WEBHOOK"
+            ],
+            "description": "Communication type. Right now we only allow WEBHOOK. "
+          },
+          "topic": {
+            "type": "string",
+            "enum": [
+              "SHIPPING_STATUS"
+            ],
+            "description": "Communication topic. Right now we only send shipping status messages."
+          },
+          "urls": {
+            "type": "array",
+            "description": "Array of urls/authorizationKey where we will comunicate the order's status changes. It's allowed maximum 3 urls for each environment configuration.",
+            "items": {
+              "$ref": "#/components/schemas/Urls"
+            }
+          }
+        },
+        "example": {
+          "isTest": "true",
+          "notificationType": "WEBHOOK",
+          "topic": "SHIPPING_STATUS",
+          "urls": [
+            {
+              "url": "www.example.com",
+              "authorizationKey": "auth_key"
+            }
+          ]
+        },
+        "x-last-modified": 1593197313690
+      },
+      "Urls": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "It must be a valid URL. You can't use these characters: <, >",
+            "maxLength": 300
+          },
+          "authorizationKey": {
+            "type": "string",
+            "description": "Authorization key could be provided for using on header. You can't use these characters: <, >",
+            "maxLength": 300
+          }
+        },
+        "example": {
+          "url": "www.example.com",
+          "authorizationKey": "auth_key"
+        }
+      },
+      "WebhooksConfigModel": {
+        "description": "Webhooks Config Schema to set url for receiving news about shipping orders. \nThe endpoint will look like: https://your_callback_url/\nHeader authorization: your_security_key (optional)\nTopics to be subscribed. ",
+        "type": "object",
+        "properties": {
+          "webhooksConfiguration": {
+            "description": "Webhooks subscriptions configuration. You could have a webhook configuration for testing and other for production purpose.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WebhookConfiguration"
+            }
+          }
+        },
+        "example": {
+          "webhooksConfiguration": [
+            {
+              "isTest": "false",
+              "topic": "SHIPPING_STATUS",
+              "notificationType": "WEBHOOK",
+              "urls": [
+                {
+                  "url": "https://your_callback_url",
+                  "authorizationKey": "your_security_key"
+                }
+              ]
+            }
+          ]
+        },
+        "x-last-modified": 1593197313690
+      },
+      "ScheduleResponse": {
+        "description": "Working weekday and hours (in UTC) for a shipping order to be delivered.",
+        "type": "object",
+        "properties": {
+          "day": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 7,
+            "description": "According to ISO format. Monday:1 - Sunday:7"
+          },
+          "from": {
+            "type": "string",
+            "format": "date-time",
+            "description": "From date time (in UTC), for example, 2010-01-01T08:00:00Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          },
+          "to": {
+            "type": "string",
+            "format": "date-time",
+            "description": "To date time (in UTC), for example, 2010-01-01T17:00:00Z.  Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          }
+        },
+        "example": {
+          "day": 1,
+          "from": "2010-01-01T07:00:00Z",
+          "to": "2010-01-01T23:00:00Z"
+        }
+      },
+      "CallbackRequest": {
+        "description": "Callback Request\nWe could have different topics. Right now we only provide SHIPPING_STATUS but more topics will be available in future.",
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "enum": [
+              "SHIPPING_STATUS"
+            ],
+            "description": "Topic suscription name."
+          },
+          "id": {
+            "type": "string",
+            "description": "Shipping identifier",
+            "maxLength": 255
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Client Internal Reference ID",
+            "maxLength": 255
+          },
+          "generated": {
+            "type": "string",
+            "description": "Date time (in UTC) when the message was generated. For example, 2020-07-21T17:32:28Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ",
+            "format": "date-time"
+          },
+          "transmitted": {
+            "type": "string",
+            "description": "Date time (in UTC) when the message was transmitted. For example, 2020-07-21T17:32:28Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ",
+            "format": "date-time"
+          },
+          "data": {
+            "type": "object",
+            "description": "Extra information depending on topic. \n* SHIPPING_STATUS: returns property 'status', and if status is CANCELLED it returns 'cancelCode' and 'cancelReason' also.",
+            "properties": {
+              "status": {
+                "$ref": "#/components/schemas/CallbackShippingStatus"
+              },
+              "cancelCode": {
+                "$ref": "#/components/schemas/CancelCode"
+              },
+              "cancelReason": {
+                "type": "string",
+                "description": "Spanish message text for the cancel code. This field is setted only if status is CANCELLED.",
+                "maxLength": 255
+              },
+              "estimatedPickUpTime": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Estimation pickup time (in UTC). This time is dynamically updated. For example, 2020-07-21T17:32:28Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ. This field is set only if the status is: CONFIRMED, IN_PROGRESS (transport has been assigned) or NEAR_PICKUP."
+              },
+              "estimatedDropOffTime": {
+                "type": "string",
+                "format": "date-time",
+                "description": "Estimation drop off time (in UTC). This time is dynamically updated. For example, 2020-07-21T17:32:28Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ. This field is set only if the status is CONFIRMED, IN_PROGRESS (transport has been assigned), NEAR_PICKUP, PICKED_UP, NEAR_DROPOFF."
+              }
+            }
+          }
+        },
+        "example": {
+          "topic": "SHIPPING_STATUS",
+          "id": "ASDF-12345678",
+          "generated": "2020-06-24T19:00:00Z",
+          "transmitted": "2020-06-24T19:08:00Z",
+          "data": {
+            "status": "CANCELLED",
+            "cancelCode": "NO_RIDER_AVAILABLE",
+            "cancelReason": "No hay cadete disponible en este momento"
+          }
+        },
+        "x-last-modified": 1593179096395
+      },
+      "WorkingZoneResponse": {
+        "description": "Working Zones are the GeoJSON zones that can be used as valid waypoint location. Every latitude and longitude must be inside these zones.",
+        "type": "object",
+        "properties": {
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last datetime (in UTC) when the zone's info was updated. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ"
+          },
+          "name": {
+            "type": "string",
+            "description": "Zone's name",
+            "maxLength": 255
+          },
+          "polygon": {
+            "$ref": "#/components/schemas/Polygon"
+          },
+          "polygonFormat": {
+            "type": "string",
+            "description": "Polygon format, for example: GEOJSON",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "lastUpdated": "2020-06-24T18:35:53Z",
+          "name": "Zona 1",
+          "polygon": {
+            "coordinates": [
+              [
+                [
+                  -79.44238793578211,
+                  9.046702677918015
+                ],
+                [
+                  -79.44187295165125,
+                  9.057043614991438
+                ],
+                [
+                  -79.42230355467859,
+                  9.070774563379121
+                ],
+                [
+                  -79.40084588255945,
+                  9.052975085065835
+                ],
+                [
+                  -79.40342080321375,
+                  9.029410611202518
+                ],
+                [
+                  -79.4365514489657,
+                  9.030427814570722
+                ],
+                [
+                  -79.44238793578211,
+                  9.046702677918015
+                ]
+              ]
+            ],
+            "type": "Polygon"
+          },
+          "polygonFormat": "GEOJSON"
+        }
+      },
+      "Polygon": {
+        "description": "Polygon with the geographical coordinates that draw the different working zones",
+        "type": "object",
+        "properties": {
+          "coordinates": {
+            "type": "array",
+            "description": "SubPolygon: a set of ring zones. Each subpolygon can be disconected. Each ring zone has an array of coordinates.",
+            "items": {
+              "type": "array",
+              "description": "Ring: a ring zone",
+              "items": {
+                "type": "array",
+                "description": "Coordinate is an array of two numbers that determinate a geo point: Latitude & Longitude",
+                "items": {
+                  "type": "number",
+                  "format": "double"
+                }
+              }
+            }
+          },
+          "type": {
+            "type": "string",
+            "description": "Geometric figure of the area. By default: Polygon."
+          }
+        }
+      },
+      "TrackingResponse": {
+        "description": "It returns the current location for shipping order (latitude, longitude)",
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Geographical point latitude"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double",
+            "description": "Geographical point longitude"
+          },
+          "deliveryName": {
+            "type": "string",
+            "description": "Delivery/rider name"
+          },
+          "estimatedPickUpTime": {
+            "type": "string",
+            "description": "Estimation pick up time (in UTC). This time is dynamically updated. For example, 2020-07-21T17:32:28Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ",
+            "format": "date-time"
+          },
+          "estimatedDropOffTime": {
+            "type": "string",
+            "description": "Estimation drop off time (in UTC). This time is dynamically updated. For example, 2020-07-21T17:32:28Z. Format ISO 8601: YYYY-MM-DDTHH:MM:SSZ",
+            "format": "date-time"
+          },
+          "deliveryTransport": {
+            "type": "string",
+            "description": "Type of delivery transport, for example bike, motorbike, etc.",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "latitude": -34.905988,
+          "longitude": -56.199592,
+          "deliveryName": "Tim",
+          "estimatedPickUpTime": "2020-07-21T17:32:28Z",
+          "estimatedDropOffTime": "2020-07-21T17:40:28Z",
+          "deliveryTransport": "Bike"
+        },
+        "x-last-modified": 1593431494920
+      },
+      "CancelRequest": {
+        "description": "Cancel request info. Example reasons: ,etc.",
+        "type": "object",
+        "properties": {
+          "reasonText": {
+            "type": "string",
+            "maxLength": 255,
+            "description": "A brief cancelation reason, for example: canceled by end user, wrong shipping info, etc"
+          }
+        },
+        "example": {
+          "reasonText": "An explanation for the cancel"
+        }
+      },
+      "EstimateCoverageRequest": {
+        "description": "This model represents the waypoints coverage estimation request. Yoy have to provide addressStreet and city and optional latitude and longitude. You can also provide latitude and longitude only. If you provide addressStreet and city only we use those values to get the geolocation (latitude and longitude values).",
+        "type": "object",
+        "required": [
+          "waypoints"
+        ],
+        "properties": {
+          "waypoints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "addressStreet": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Address information including street name and door number."
+                },
+                "city": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Geographical point's city name. For example: Buenos Aires (AR), Antofagasta (CL), Montevideo (UY)."
+                },
+                "latitude": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "Geographical point latitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+                },
+                "longitude": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "Geographical point longitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+                }
+              }
+            }
+          }
+        }
+      },
+      "WayPointStatus": {
+        "type": "string",
+        "enum": [
+          "OK",
+          "OUT_OF_ZONE",
+          "UNCHECKED",
+          "NOT_FOUND"
+        ],
+        "description": "This model represent the waypoint status. When we estimate a waypoint coverage we will generate one of the next possible statuses:\n* OK: the waypoint is inside PedidosYa fleet's working zone\n* OUT_OF_ZONE: the waypoint is outside PedidosYa fleet's working zone\n* UNCHECKED: the waypoint couldn't be validated\n* NOT_FOUND: the waypoint couldn't be found in Google Maps. This could happend if you only set waypoint's addressStreet and city, and those values don't be accurate. Try to add latitude & longitude."
+      },
+      "EstimateCoverageResponse": {
+        "description": "This model represents the waypoints coverage estimation response.",
+        "type": "object",
+        "required": [
+          "waypoints",
+          "coverageStaticMap"
+        ],
+        "properties": {
+          "waypoints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "addressStreet",
+                "city",
+                "latitude",
+                "longitude",
+                "status"
+              ],
+              "properties": {
+                "addressStreet": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Address information including street name and door number."
+                },
+                "city": {
+                  "type": "string",
+                  "maxLength": 255,
+                  "description": "Geographical point's city name. For example: Buenos Aires (AR), Antofagasta (CL), Montevideo (UY)."
+                },
+                "latitude": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "Geographical point latitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+                },
+                "longitude": {
+                  "type": "number",
+                  "format": "double",
+                  "description": "Geographical point longitude. This property is optional, if not setted we use addressStreet to get a geolocation value."
+                },
+                "status": {
+                  "$ref": "#/components/schemas/WayPointStatus"
+                }
+              }
+            }
+          },
+          "coverageStaticMap": {
+            "type": "string",
+            "format": "binary",
+            "description": "JPG image in base64 format with a static map with the waypoints rendered in it."
+          }
+        }
+      },
+      "ConfirmedEstimationShippingRequest": {
+        "description": "This model represents an order that must be confirmed. ",
+        "type": "object",
+        "properties": {
+          "deliveryOfferId": {
+            "type": "string",
+            "description": "Delivery Offer ID. If the deliveryOfferId is not specified, the first available offer will be considered valid.",
+            "maxLength": 255
+          }
+        },
+        "example": {
+          "deliveryOfferId": "679db4989914e48805f3303eb29c4dec"
+        }
+      },
+      "PriceModel": {
+        "description": "This models contains a shipping's price related fields.",
+        "type": "object",
+        "properties": {
+          "distance": {
+            "type": "integer",
+            "description": "Shipping total distance in meters"
+          },
+          "subtotal": {
+            "type": "number",
+            "format": "double",
+            "description": "Shipping amount without taxes"
+          },
+          "taxes": {
+            "type": "number",
+            "format": "double",
+            "description": "Shipping taxes"
+          },
+          "total": {
+            "type": "number",
+            "format": "double",
+            "description": "Shipping total amount"
+          },
+          "currency": {
+            "type": "string",
+            "enum": [
+              "UYU",
+              "CLP",
+              "ARS",
+              "USD",
+              "BRL",
+              "COP",
+              "PEN",
+              "VES",
+              "MXN",
+              "PAB",
+              "PYG",
+              "CRC",
+              "BOB",
+              "DOP"
+            ],
+            "description": "Shipping amount's currency in ISO 4217 currency names."
+          }
+        },
+        "example": {
+          "distance": 2345,
+          "subtotal": 184.85,
+          "taxes": 5.15,
+          "total": 190,
+          "currency": "UYU"
+        }
+      },
+      "HTTPResponse": {
+        "type": "object",
+        "description": "HTTP response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "Item quantity must be greater than zero"
+          }
+        }
+      },
+      "HTTPResponseLabels": {
+        "type": "object",
+        "description": "HTTP response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "Item quantity must be greater than zero"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code that indicates the error's origin:\n* INVALID_QUERY_PARAM: The provided query parameter is not valid. \n* INVALID_MAX_LABELS_QUANTITY: The maximum number of labels it can generate is 50.  \n* INVALID_SHIPPING_DATA: To generate the labels, the orders must be in the CONFIRMED status. \n*  SHIPPING_DATA_NOT_FOUND: No data was found matching the search criteria.",
+            "enum": [
+              "INVALID_QUERY_PARAM",
+              "INVALID_MAX_LABELS_QUANTITY",
+              "INVALID_SHIPPING_DATA",
+              "SHIPPING_DATA_NOT_FOUND"
+            ]
+          }
+        }
+      },
+      "HTTPBadRequestPathParam": {
+        "type": "object",
+        "description": "HTTP Bad Request Response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "Invalid ShippingId parameter. Only characters [a-z], [A-Z], [0-9] and '-' are accepted"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code that indicates the error's origin:\n*INVALID_PARAM: Invalid parameter in path request.",
+            "enum": [
+              "INVALID_PARAM"
+            ]
+          }
+        }
+      },
+      "HTTPBadRequestResponse": {
+        "type": "object",
+        "description": "HTTP Bad Request Response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "Item quantity must be greater than zero"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code that indicates the error's origin:\n* WAYPOINTS_OUT_OF_ZONE: Waypoint/s in order: $order is/are out of zone\n* WAYPOINTS_NOT_FOUND: We were not able to find lat/long for waypoint/s in order: $order.\n* MAX_DISTANCE_EXCEEDED: if the max distance is exceeded\n* MAX_WAYPOINTS_EXCEEDED: The number of waypoints allowed was exceeded\n* MAX_VALUE_EXCEEDED: The total amount of the items exceeds the insurance\n* MAX_VOLUME_EXCEEDED: The volume limit was exceeded.\n* MAX_WEIGHT_EXCEEDED: The weight limit was exceeded.\n * NOT_SUPPORTED_COLLECT_MONEY: Client can't create order with cash collection option. If you need this option please contact PedidosYa account manager.\n* COLLECT_MONEY_EXCEEDED: Amount specified to be collected at dropOff exceed the maximum permitted.\n* JSON_INVALID: Invalid json.",
+            "enum": [
+              "WAYPOINTS_NOT_FOUND",
+              "WAYPOINTS_OUT_OF_ZONE",
+              "MAX_DISTANCE_EXCEEDED",
+              "MAX_WAYPOINTS_EXCEEDED",
+              "MAX_VALUE_EXCEEDED",
+              "MAX_VOLUME_EXCEEDED",
+              "MAX_WEIGHT_EXCEEDED",
+              "JSON_INVALID"
+            ]
+          }
+        }
+      },
+      "HTTPBadRequestResponseConfirmate": {
+        "type": "object",
+        "description": "HTTP Bad Request Response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "Item quantity must be greater than zero"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code that indicates the error's origin:\n* JSON_INVALID: Invalid json.",
+            "enum": [
+              "INVALID_STATUS",
+              "JSON_INVALID"
+            ]
+          }
+        }
+      },
+      "HTTPBadRequestResponseCoverage": {
+        "type": "object",
+        "description": "HTTP Bad Request Response",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "HTTP Status Code",
+            "example": 400
+          },
+          "message": {
+            "type": "string",
+            "description": "Description of the warning/error.",
+            "example": "Item quantity must be greater than zero"
+          },
+          "code": {
+            "type": "string",
+            "description": "Code that indicates the error's origin:\n* WAYPOINTS_OUT_OF_ZONE: Waypoint/s in order: $order is/are out of zone\n* WAYPOINTS_NOT_FOUND: We were not able to find lat/long for waypoint/s in order: $order.\n* MAX_DISTANCE_EXCEEDED: if the max distance is exceeded\n* MAX_WAYPOINTS_EXCEEDED: The number of waypoints allowed was exceeded\n* JSON_INVALID: Invalid json.",
+            "enum": [
+              "WAYPOINTS_NOT_FOUND",
+              "WAYPOINTS_OUT_OF_ZONE",
+              "MAX_DISTANCE_EXCEEDED",
+              "MAX_WAYPOINTS_EXCEEDED",
+              "JSON_INVALID"
+            ]
+          },
+          "details": {
+            "type": "object",
+            "description": "If the error is MAX_DISTANCE_EXCEEDED, we send the details object providing the following information:",
+            "properties": {
+              "maxDistanceAllowed": {
+                "type": "integer",
+                "description": "In this attribute, we send the maximum allowed distance."
+              },
+              "totalDistance": {
+                "type": "integer",
+                "description": "In this attribute, we send the total distance of the order."
+              }
+            }
+          }
+        }
+      },
+      "ShippingItem": {
+        "type": "object",
+        "description": "Item's description. A package shipped could have multiple items.",
+        "required": [
+          "value",
+          "description",
+          "quantity",
+          "volume",
+          "weight"
+        ],
+        "properties": {
+          "categoryId": {
+            "deprecated": true,
+            "type": "integer",
+            "description": "Category identifier provided by PedidosYa. You can obtain the available categories from the endpoint <a href='#tag/categories'>Get Categories</a>. "
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "description": "Value of the unit item shipped. Min value major to 0 and max value is variable according to the agreement made, or failing that the maximum value insured by country.  If you send multiple units of the item, the total value shipped (for a specific item) will be the value of one unit times the quantity: value * quantity. If you send multiple items of different types the total value shipped will be the sum of the value of a unit of each item by its quantity: (valueItem1 * quantitytItem1) + (valueItem2 * quantityItem2) + ..."
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 235,
+            "description": "Description of the item shipped"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "description": "Quantity of the same item. Min value 1, and max value is 10000"
+          },
+          "volume": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "maximum": 80840,
+            "description": "Volume of a unit of the item in cm3. Min value 0.00, and max value is 80840.00 (47 * 43 * 40) cm3"
+          },
+          "weight": {
+            "type": "number",
+            "format": "double",
+            "minimum": 0,
+            "maximum": 10,
+            "description": "Weight of a unit of the item in kilograms with two decimals. Min value is 0.00, and max value is 20.00 kg"
+          }
+        }
+      },
+      "ShippingStatus": {
+        "type": "string",
+        "enum": [
+          "REJECTED",
+          "CONFIRMED",
+          "IN_PROGRESS",
+          "NEAR_PICKUP",
+          "PICKED_UP",
+          "NEAR_DROPOFF",
+          "COMPLETED",
+          "CANCELLED"
+        ],
+        "description": "Shippings status. Status values are:\n* Rejected: Shipping order requested but rejected due to invalid data\n* Confirmed: Shipping order confirmed and awaiting for dispatching \n* In Progress: Transport has been assigned  \n* Near Pickup: Transport is near pickup point \n* Picked up: Transport picked up the order's items \n* Near Dropoff: Transport is closest to dropoff point \n* Completed: Transport had delivered the items \n* Cancelled: Shipping order cancelled for any reason. <br><br>"
+      },
+      "CancelCode": {
+        "type": "string",
+        "enum": [
+          "ADDRESS_DATA_MISSING",
+          "NO_RIDER_AVAILABLE",
+          "OUT_OF_DELIVERY_ZONE",
+          "DELAYED_DELIVERY_SCHEDULE",
+          "COORDINATE_ERROR",
+          "PACKAGE_DAMAGE_LOOSE",
+          "ORDER_NOT_DELIVERED",
+          "INAPPROPRIATE_CONDUCT",
+          "UNREACHABLE_RIDER",
+          "TYC_PACKAGE_CONTRADICTION",
+          "PURCHASE_REQUESTED",
+          "USER_CANNOT_PAY",
+          "COUPON_NOT_APPLIED",
+          "DUPLICATED_ORDER",
+          "UNREACHABLE_USER_DROPOFF",
+          "SUSPICIOUS_CLIENT",
+          "USER_CANCELLED",
+          "TECHNICAL_PROBLEM",
+          "BAD_WEATHER",
+          "UNREACHABLE_USER_PICKUP",
+          "CONTENT_WRONG",
+          "ORDER_MODIFICATION",
+          "OUT_OF_FLEET_TIME",
+          "TEST_ORDER",
+          "CONTENT_WRONG_RIDER"
+        ],
+        "description": "This field is setted only if status is CANCELLED. The Cancel Reason Codes are show bellow with its spanish messages for cancelReason field:\n* ADDRESS_DATA_MISSING: Rider no encuentra el pickup/dropoff \n* NO_RIDER_AVAILABLE: No hay cadete disponible en este momento \n* OUT_OF_DELIVERY_ZONE: Fuera de área de cobertura del servicio \n* DELAYED_DELIVERY_SCHEDULE: Cancelado debido a horario de entrega retrasado \n* COORDINATE_ERROR: Coordenadas no concuerdan con la dirección ingresada \n* PACKAGE_DAMAGE_LOOSE: Se produjo un problema con el producto o paquete \n* ORDER_NOT_DELIVERED: Pedido no entregado \n* INAPPROPRIATE_CONDUCT: Cancelado por problemas con el rider \n* UNREACHABLE_RIDER: Cancelado por problemas con el rider \n* TYC_PACKAGE_CONTRADICTION: Pedido incorrecto. Paquete o producto no respeta TyC. \n* PURCHASE_REQUESTED: Pedido realizado por error \n* USER_CANNOT_PAY: Solicitud de envío pendiente de pago. El usuario no puede pagar el pedido. \n* COUPON_NOT_APPLIED: No fue posible aplicar el cupón. \n* DUPLICATED_ORDER: Pedido duplicado \n* UNREACHABLE_USER_DROPOFF: No es posible contactar al cliente en Punto de Entrega \n* SUSPICIOUS_CLIENT: Pedido incorrecto.\n* USER_CANCELLED: Cancelado a solicitud del usuario \n* TECHNICAL_PROBLEM: Cancelado por problemas técnicos \n* BAD_WEATHER: Condiciones climáticas adversas \n* UNREACHABLE_USER_PICKUP: No es posible contactar al cliente en Punto de Retiro \n* CONTENT_WRONG: Producto despachado no es correcto. \n* ORDER_MODIFICATION: No es posible modificar punto de origen o destino \n* OUT_OF_FLEET_TIME: Fuera de horario de servicio \n* TEST_ORDER: Orden de prueba - TEST \n* CONTENT_WRONG_RIDER: Producto despachado no es correcto"
+      },
+      "CallbackShippingStatus": {
+        "type": "string",
+        "enum": [
+          "CONFIRMED",
+          "CANCELLED",
+          "IN_PROGRESS",
+          "NEAR_PICKUP",
+          "PICKED_UP",
+          "NEAR_DROPOFF",
+          "COMPLETED"
+        ],
+        "description": "We only send callback shipping status for this status values: \n* Confirmed: Shipping order confirmed and awaiting for dispatching \n* In Progress: Transport has been assigned  \n* Near Pickup: Transport is near pickup point \n* Picked up: Transport picked up the order's items \n* Near Dropoff: Transport is closest to dropoff point \n* Completed: Transport had delivered the items \n* Cancelled: Shipping order cancelled for any reason."
+      }
+    },
+    "parameters": {},
+    "responses": {
+      "200": {
+        "description": "Operation succeeded"
+      },
+      "400": {
+        "description": "Bad request"
+      },
+      "401": {
+        "description": "Authorization information is missing or invalid."
+      },
+      "403": {
+        "description": "Forbidden"
+      },
+      "404": {
+        "description": "Not found"
+      },
+      "500": {
+        "description": "Internal Server Error"
+      }
+    },
+    "headers": {
+      "Content-Type": {
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "format": "",
+          "pattern": "",
+          "type": "string",
+          "example": "application/json"
+        },
+        "example": "application/json",
+        "description": "Content Type Header"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Shippings",
+      "description": "Shipping Orders related endpoints"
+    },
+    {
+      "name": "Webhooks Configuration",
+      "description": "Webhooks Configuration"
+    },
+    {
+      "name": "Callback",
+      "description": "Callback POST for SHIPPING_STATUS"
+    },
+    {
+      "name": "Coverage",
+      "description": "Fleet coverage & working zones endpoints"
+    },
+    {
+      "name": "Schedules",
+      "description": "Schedules configurations"
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "General",
+      "tags": [
+        "Shippings",
+        "Callback",
+        "Webhooks Configuration",
+        "Coverage",
+        "Schedules"
+      ]
+    }
+  ],
+  "externalDocs": {
+    "description": "Site For Developers (in spanish)",
+    "url": "https://developers.pedidosya.com/courier-doc"
+  }
+}
