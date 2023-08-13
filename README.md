@@ -1,2 +1,3 @@
 # ChatBot
 Mi primer asistente virtual desarrollado en Python.
+Este chatbot es un asistente virtual desarrollado en Python que simula ser un ayudante en una cafetería. Está diseñado para interactuar con los usuarios y brindar respuestas relacionadas con el estado de pedidos y detalles de entrega utilizando una simulación de la API de PedidosYA. Además, utiliza la API de Rasa para generar respuestas más detalladas en función de la entrada del usuario. El chatbot también responde a comandos de despedida y maneja posibles errores en las respuestas generadas. La conversación es llevada a cabo a través de la terminal, donde los usuarios pueden interactuar con el chatbot ingresando sus preguntas o comandos.
